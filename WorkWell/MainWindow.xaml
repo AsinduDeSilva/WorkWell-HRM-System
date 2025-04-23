@@ -12,10 +12,8 @@
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Background="Black">
+        <Grid Background="Black" />
 
-        </Grid>
-
-        <Grid />
+        <Frame Name="MainFrame" Grid.Column="1" Margin="20 25"/>
     </Grid>
 </Window>
