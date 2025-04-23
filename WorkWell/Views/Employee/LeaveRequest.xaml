@@ -1,0 +1,69 @@
+﻿<Page x:Class="WorkWell.Views.Employee.LeaveRequest"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="clr-namespace:WorkWell.Views.Employee"
+      Title="LeaveRequest">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="20" Background="White">
+            <StackPanel>
+
+                <TextBlock Text="Apply For Leave" FontSize="28" FontWeight="Bold" Margin="0,0,0,20"/>
+
+                
+                <TextBlock Text="Employee Details" FontSize="15" FontWeight="Bold" Margin="0,0,0,10"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Employee ID:" Width="120" FontSize="14"/>
+                    <TextBox x:Name="txtEmpId" Width="200"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                    <TextBlock Text="Employee Name:" Width="120" FontSize="14"/>
+                    <TextBox x:Name="txtEmpName" Width="200"/>
+                </StackPanel>
+
+                
+                <TextBlock Text="Leave Details" FontSize="15" FontWeight="Bold" Margin="0,0,0,10"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Date:" Width="120" FontSize="14"/>
+                    <DatePicker x:Name="dpStartDate" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Leave Type:" Width="120" FontSize="14"/>
+                    <ComboBox x:Name="cmbLeaveType" Width="200">
+                        <ComboBoxItem Content="Sick Leave"/>
+                        <ComboBoxItem Content="Casual Leave"/>
+                        <ComboBoxItem Content="Vacation"/>
+                    </ComboBox>
+                </StackPanel>
+
+                
+                <Button Content="Submit Request" Width="150" Height="30" Margin="0,10" HorizontalAlignment="Left"/>
+
+                
+                <TextBlock Text="Remaining Leaves" FontSize="15" FontWeight="Bold" Margin="0,20,0,10"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Sick Leave: 5" Width="150"/>
+                    <TextBlock Text="Casual Leave: 3" Width="150"/>
+                    <TextBlock Text="Vacation: 7" Width="150"/>
+                </StackPanel>
+
+                
+                <TextBlock Text="Leave Request History" FontSize="28" FontWeight="Bold" Margin="0,20,0,20"/>
+                <DataGrid x:Name="dgLeaveStatus"
+                          AutoGenerateColumns="False"
+                          HeadersVisibility="Column"
+                          CanUserAddRows="False"
+                          Height="200">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Request ID" Binding="{Binding RequestId}" Width="*"/>
+                        <DataGridTextColumn Header="Date" Binding="{Binding StartDate}" Width="*"/>
+                        <DataGridTextColumn Header="Leave Type" Binding="{Binding LeaveType}" Width="*"/>
+                        <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>
