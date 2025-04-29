@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using WorkWell.Views.Employee;
+using WorkWell.Views;
 
 namespace WorkWell;
 
@@ -8,8 +8,6 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        //MainFrame.Navigate(new Profile());
-        //MainFrame.Navigate(new LeaveRequest());
-        MainFrame.Navigate(new Settings());
+        MainFrame.Navigate(new Signin());
     }
 }
