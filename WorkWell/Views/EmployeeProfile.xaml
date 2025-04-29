@@ -1,0 +1,84 @@
+﻿<Page x:Class="WorkWell.Views.EmployeeProfile"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WorkWell.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EmployeeProfile">
+
+    <Grid Background="White" Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Source="/Views/Employee/Profile.jpg"
+               Grid.Column="0"
+               Height="184"
+               Width="183"
+               Margin="7,62,0,0"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top" />
+
+        <StackPanel Grid.Column="1" Margin="30,0,0,0">
+            <TextBlock Text="Dewmi Samadhi" FontSize="26" Margin="0 0 0 40"/>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="User ID" Grid.Row="0" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
+                <TextBlock Text="001" Grid.Row="0" Grid.Column="1"/>
+
+                <TextBlock Text="Name" Grid.Row="1" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
+                <TextBlock Text="Dewmi Samadhi" Grid.Row="1" Grid.Column="1"/>
+
+                <TextBlock Text="NIC" Grid.Row="2" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
+                <TextBlock Text="123456789" Grid.Row="2" Grid.Column="1"/>
+
+                <TextBlock Text="Department" Grid.Row="3" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
+                <TextBlock Text="IT" Grid.Row="3" Grid.Column="1"/>
+
+                <TextBlock Text="Position" Grid.Row="4" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
+                <TextBlock Text="Web Developer and Designer" Grid.Row="4" Grid.Column="1"/>
+
+                <TextBlock Text="Contact" Grid.Row="5" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
+                <TextBlock Text="123 456 7890" Grid.Row="5" Grid.Column="1"/>
+
+                <TextBlock Text="Gender" Grid.Row="6" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
+                <TextBlock Text="Female" Grid.Row="6" Grid.Column="1"/>
+
+                <TextBlock Text="Email" Grid.Row="7" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
+                <TextBlock Text="dewmi@gmail.com" Grid.Row="7" Grid.Column="1"/>
+
+                <TextBlock Text="Salary" Grid.Row="8" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
+                <TextBlock Text="$70" Grid.Row="8" Grid.Column="1"/>
+
+                <TextBlock Text="Remaining Leave Count" Grid.Row="9" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
+                <TextBlock Text="15" Grid.Row="9" Grid.Column="1"/>
+            </Grid>
+
+            <StackPanel Orientation="Horizontal" Margin="0,30,0,0">
+                <Button Content="Update" Width="100" Height="30" Background="Black" Foreground="White" Margin="0,0,20,0"/>
+                <Button Content="Delete" Width="100" Height="30" Background="Black" Foreground="White"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

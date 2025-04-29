@@ -36,6 +36,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
                     <TextBlock Text="User ID" FontSize="15" Grid.Row="0" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
@@ -56,14 +57,17 @@
                     <TextBlock Text="Contact" FontSize="15" Grid.Row="5" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
                     <TextBlock Text="123 456 7890" FontSize="15" Grid.Row="5" Grid.Column="1"/>
 
-                    <TextBlock Text="Email" FontSize="15" Grid.Row="6" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
-                    <TextBlock Text="dewmi@gmail.com" FontSize="15" Grid.Row="6" Grid.Column="1"/>
+                    <TextBlock Text="Gender" FontSize="15" Grid.Row="6" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
+                    <TextBlock Text="Female" FontSize="15" Grid.Row="6" Grid.Column="1"/>
 
-                    <TextBlock Text="Salary" FontSize="15" Grid.Row="7" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
-                    <TextBlock Text="$70" FontSize="15" Grid.Row="7" Grid.Column="1"/>
+                    <TextBlock Text="Email" FontSize="15" Grid.Row="7" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
+                    <TextBlock Text="dewmi@gmail.com" FontSize="15" Grid.Row="7" Grid.Column="1"/>
 
-                    <TextBlock Text="Remaining Leave Count" FontSize="15" Grid.Row="8" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
-                    <TextBlock Text="15" FontSize="15" Grid.Row="8" Grid.Column="1"/>
+                    <TextBlock Text="Salary" FontSize="15" Grid.Row="8" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
+                    <TextBlock Text="$70" FontSize="15" Grid.Row="8" Grid.Column="1"/>
+
+                    <TextBlock Text="Remaining Leave Count" FontSize="15" Grid.Row="9" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
+                    <TextBlock Text="15" FontSize="15" Grid.Row="9" Grid.Column="1"/>
                 </Grid>
             </StackPanel>
             <Image Source="/Views/Employee/Profile.jpg" HorizontalAlignment="Left" Height="184" Margin="7,62,0,0" VerticalAlignment="Top" Width="183" RenderTransformOrigin="-0.283,-0.164"/>
