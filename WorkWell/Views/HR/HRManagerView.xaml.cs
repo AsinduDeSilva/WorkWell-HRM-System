@@ -21,10 +21,32 @@ namespace WorkWell.Views.HR
     /// </summary>
     public partial class HRManagerView : Page
     {
-        public HRManagerView()
+        private Frame MainFrame;
+        public HRManagerView(Frame MainFrame)
         {
             InitializeComponent();
-            MainFrame.Navigate(new HRManagerPage());
+            this.MainFrame = MainFrame;
+            SubFrame.Navigate(new EmployeePage());
+        }
+
+        private void txtEmployeesClick(object sender, MouseButtonEventArgs e)
+        {
+            SubFrame.Navigate(new EmployeePage());
+        }
+
+        private void txtLeaveApprovalClick(object sender, MouseButtonEventArgs e)
+        {
+            SubFrame.Navigate(new LeaveRequestPage());
+        }
+
+        private void txtAttendanceClick(object sender, MouseButtonEventArgs e)
+        {
+            SubFrame.Navigate(new Attendance());
+        }
+
+        private void txtLogoutClick(object sender, MouseButtonEventArgs e)
+        {
+            MainFrame.Navigate(new Signin());
         }
     }
 }

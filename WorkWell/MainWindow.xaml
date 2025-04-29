@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="640" Width="1024" ResizeMode="CanMinimize">
     <Grid>
-        <Frame Name="MainFrame"/>
+        <Frame Name="MainFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

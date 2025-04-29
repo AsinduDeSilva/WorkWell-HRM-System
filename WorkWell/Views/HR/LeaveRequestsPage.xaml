@@ -5,7 +5,10 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d"
       Title="LeaveRequests"
-      Background="#F4F6F7">
+      Background="White"
+      d:DesignHeight="640" d:DesignWidth="768"
+>
+      
 
     <Grid>
         <StackPanel>

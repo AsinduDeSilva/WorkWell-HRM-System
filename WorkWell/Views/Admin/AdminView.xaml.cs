@@ -20,10 +20,27 @@ namespace WorkWell.Views.Admin
     /// </summary>
     public partial class AdminView : Page
     {
-        public AdminView()
+        private Frame MainFrame;
+        public AdminView(Frame MainFrame)
         {
             InitializeComponent();
-            MainFrame.Navigate(new EmployeePage());
+            this.MainFrame = MainFrame;
+            SubFrame.Navigate(new EmployeePage());
+        }
+
+        private void txtLogoutClick(object sender, MouseButtonEventArgs e)
+        {
+            MainFrame.Navigate(new Signin());
+        }
+
+        private void txtEmployeesClick(object sender, MouseButtonEventArgs e)
+        {
+            SubFrame.Navigate(new EmployeePage());
+        }
+
+        private void txtHRManagersClick(object sender, MouseButtonEventArgs e)
+        {
+            SubFrame.Navigate(new HRManagerPage());
         }
     }
 }
