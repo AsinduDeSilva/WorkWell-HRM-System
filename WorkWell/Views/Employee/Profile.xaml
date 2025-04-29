@@ -18,7 +18,7 @@
 
 
 
-            <StackPanel Grid.Column="1" Margin="30,0,0,0">
+            <StackPanel Grid.Column="1" Margin="60,0,0,0">
                 <TextBlock Text="Dewmi Samadhi" FontSize="26" Margin="0 0 0 40"/>
                 <Grid Margin="0,10,0,0">
                     <Grid.ColumnDefinitions>
@@ -70,8 +70,8 @@
                     <TextBlock Text="15" FontSize="15" Grid.Row="9" Grid.Column="1"/>
                 </Grid>
             </StackPanel>
-            <Image Source="/Views/Employee/Profile.jpg" HorizontalAlignment="Left" Height="184" Margin="7,62,0,0" VerticalAlignment="Top" Width="183" RenderTransformOrigin="-0.283,-0.164"/>
-
+            <Image Source="/Assets/Profile.jpg" HorizontalAlignment="Left" Height="184" Margin="7,62,0,0" VerticalAlignment="Top" Width="183" RenderTransformOrigin="-0.283,-0.164"/>
+            <Ellipse HorizontalAlignment="Center" Height="190" Margin="0,62,0,0" Stroke="Black" VerticalAlignment="Top" Width="190" StrokeThickness="5"/>
         </Grid>
     </Grid>
 </Page>

@@ -14,15 +14,16 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Image Source="/Views/Employee/Profile.jpg"
+        <Image Source="/Assets/Profile.jpg"
                Grid.Column="0"
                Height="184"
                Width="183"
                Margin="7,62,0,0"
                HorizontalAlignment="Left"
-               VerticalAlignment="Top" />
+               VerticalAlignment="Top"
+        />
 
-        <StackPanel Grid.Column="1" Margin="30,0,0,0">
+        <StackPanel Grid.Column="1" Margin="60,0,0,0">
             <TextBlock Text="Dewmi Samadhi" FontSize="26" Margin="0 0 0 40"/>
 
             <Grid>
@@ -80,5 +81,6 @@
                 <Button Content="Delete" Width="100" Height="30" Background="Black" Foreground="White"/>
             </StackPanel>
         </StackPanel>
+        <Ellipse HorizontalAlignment="Center" Height="190" Margin="0,62,0,0" Stroke="Black" VerticalAlignment="Top" Width="190" StrokeThickness="5"/>
     </Grid>
 </Page>
