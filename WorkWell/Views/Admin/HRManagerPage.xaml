@@ -1,0 +1,25 @@
+﻿<Page x:Class="WorkWell.Views.Admin.HRManagerPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WorkWell.Views.Admin"
+      mc:Ignorable="d" 
+      d:DesignHeight="680" d:DesignWidth="768"
+      Title="HRManagerPage">
+
+    <Grid Background="White">
+        <TextBlock HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" Text="HR Managers" VerticalAlignment="Top" Height="37" Width="172" FontSize="28" FontWeight="SemiBold"/>
+        <Button x:Name="Add_HRManager" Content="+ Add HR Manager" HorizontalAlignment="Left" Height="27" Margin="570,66,0,0" VerticalAlignment="Top" Width="134" Click="Add_Employee_Click"/>
+
+        <DataGrid Name="DataGrid_HRManagers" HorizontalAlignment="Left" Height="335" Margin="4,129,0,0" VerticalAlignment="Top" Width="710" d:ItemsSource="{d:SampleData ItemCount=5}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Manager ID" Binding="{Binding [Manager ID]}" Width="1*"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="3*"/>
+                <DataGridTextColumn Header="Departments" Binding="{Binding Departments}" Width="2*"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
+    </Grid>
+</Page>
+
