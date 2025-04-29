@@ -1,0 +1,46 @@
+﻿<Page x:Class="WorkWell.Views.Signin"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WorkWell.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="640" d:DesignWidth="1024"
+      Title="Signin">
+
+    <Grid Background="White">
+        <Grid Margin="504,100,16,100">
+            <TextBlock Text="Sign In" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,20,0,0"/>
+
+            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Width="300" Margin="0,93,0,0" Height="214">
+                <TextBlock Text="Username:" Margin="0,10,0,5"/>
+                <TextBox x:Name="UsernameTextBox" Height="30" Margin="0,0,0,10"/>
+
+                <TextBlock Text="Password:" Margin="0,10,0,5"/>
+                <PasswordBox x:Name="PasswordBox" Height="30" Margin="0,0,0,20"/>
+
+                <Button 
+                    Background="#213448" 
+                    Foreground="White" 
+                    Content="Sign In" 
+                    Width="100" 
+                    Height="30" 
+                    HorizontalAlignment="Center" 
+                    Click="Button_Click"
+                    Margin="20"
+                />
+            </StackPanel>
+        </Grid>
+        <Image HorizontalAlignment="Left" Height="288" Margin="112,126,0,0" VerticalAlignment="Top" Width="271" Source="/Assets/Logo.png"/>
+        <Separator HorizontalAlignment="Left" Height="48" Margin="211,270,0,0" VerticalAlignment="Top" Width="547" RenderTransformOrigin="0.5,0.5">
+            <Separator.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90.651"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Separator.RenderTransform>
+        </Separator>
+    </Grid>
+</Page>

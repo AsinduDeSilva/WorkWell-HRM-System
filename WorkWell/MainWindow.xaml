@@ -7,13 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="640" Width="1024" ResizeMode="CanMinimize">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="3*"/>
-        </Grid.ColumnDefinitions>
-
-        <Grid Background="Black" />
-
-        <Frame Name="MainFrame" Grid.Column="1" Margin="20 25"/>
+        <Frame Name="MainFrame"/>
     </Grid>
 </Window>
