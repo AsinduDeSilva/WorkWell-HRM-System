@@ -4,6 +4,8 @@ using WorkWell.Enums;
 using WorkWell.MVVM;
 using WorkWell.Services;
 using WorkWell.Views.Admin;
+using WorkWell.Views.Employee;
+using WorkWell.Views.HR;
 
 namespace WorkWell.ViewModels
 {
@@ -53,12 +55,11 @@ namespace WorkWell.ViewModels
                     }
                     else if (user.Role.Equals(RoleTypes.HRM.ToString()))
                     {
-
-
+                        FrameManagerService.MainFrame.Navigate(new HRManagerView());
                     }
                     else if (user.Role.Equals(RoleTypes.EMPLOYEE.ToString()))
                     {
-                       
+                        FrameManagerService.MainFrame.Navigate(new EmployeeView());
                     }
                     return;
                 }
