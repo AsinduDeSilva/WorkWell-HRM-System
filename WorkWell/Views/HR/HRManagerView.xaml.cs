@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using WorkWell.Services;
 using WorkWell.Views.Admin;
 
 namespace WorkWell.Views.HR
@@ -21,11 +10,10 @@ namespace WorkWell.Views.HR
     /// </summary>
     public partial class HRManagerView : Page
     {
-        private Frame MainFrame;
-        public HRManagerView(Frame MainFrame)
+        public HRManagerView()
         {
             InitializeComponent();
-            this.MainFrame = MainFrame;
+            FrameManagerService.SubFrame = SubFrame;
             SubFrame.Navigate(new EmployeePage());
         }
 
@@ -46,7 +34,7 @@ namespace WorkWell.Views.HR
 
         private void txtLogoutClick(object sender, MouseButtonEventArgs e)
         {
-            MainFrame.Navigate(new Signin());
+            FrameManagerService.MainFrame.Navigate(new Signin());
         }
     }
 }
