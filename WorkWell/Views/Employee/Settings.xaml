@@ -9,23 +9,24 @@
       Title="Settings">
 
     <Grid Background="White">
-        <Border Width="400" Padding="0 0 0 30" Background="White" CornerRadius="10" 
-                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" >
-            <StackPanel>
+        <Border Width="572" Padding="0 0 0 30" Background="White" CornerRadius="10" 
+                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Height="410" >
+            <StackPanel Margin="0,0,-144,-20">
 
                 <TextBlock Text="Change Password" FontSize="28" FontWeight="Bold" Margin="0 0 0 30"/>
 
                 <TextBlock Text="Current Password"/>
-                <PasswordBox x:Name="txtCurrentPassword" Margin="0,5,0,15"/>
+                <PasswordBox x:Name="txtCurrentPassword" Margin="0,5,0,15" Height="25" Width="500" HorizontalAlignment="Left"/>
 
                 <TextBlock Text="New Password"/>
-                <PasswordBox x:Name="txtNewPassword" Margin="0,5,0,15"/>
+                <PasswordBox x:Name="txtNewPassword" Margin="0,5,0,15" Height="25" Width="500" HorizontalAlignment="Left"/>
 
                 <TextBlock Text="Confirm New Password"/>
-                <PasswordBox x:Name="txtConfirmPassword" Margin="0,5,0,25"/>
-                <Button Content="Update Password" Width="180" Height="35"
-                        Background="Black" Foreground="White" HorizontalAlignment="Left"
-                        />
+                <PasswordBox x:Name="txtConfirmPassword" Margin="0,5,0,25" Height="25" Width="500" HorizontalAlignment="Left"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,0">
+                    <Button Content="Save" Height="32" Width="200" Margin="0,0,10,0" Background="Black" Foreground="White" />
+                    <Button Content="Cancel" Height="32" Width="200" Background="Black" Foreground="White"/>
+                </StackPanel>
             </StackPanel>
         </Border>
     </Grid>
