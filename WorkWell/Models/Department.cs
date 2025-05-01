@@ -17,7 +17,7 @@ namespace WorkWell.Models
         public string DepartmentName { get; set; }
 
         [ForeignKey(nameof(HRManager))]
-        public int HRManagerID { get; set; }
+        public int? HRManagerID { get; set; }
         public virtual HRManager HRManager { get; set; }
 
         public virtual ICollection<Employee> Employees { get; set; }
