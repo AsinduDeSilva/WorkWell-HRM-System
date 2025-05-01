@@ -1,8 +1,10 @@
-﻿using System.Windows;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Windows;
 using WorkWell.Data;
 using WorkWell.Enums;
 using WorkWell.MVVM;
 using WorkWell.Services;
+using WorkWell.Session;
 using WorkWell.Views.Admin;
 using WorkWell.Views.Employee;
 using WorkWell.Views.HR;
@@ -45,10 +47,11 @@ namespace WorkWell.ViewModels
         }
         public void Login()
         {
-            foreach (var user in context.Users.ToList())
+            foreach (var user in context.Users.Include(user => user.Employee).Include(user => user.HRManager).ToList())
             {
                 if (user.Email == email && user.Password == password)
                 {
+                    UserSession.Login(user);
                     if (user.Role.Equals(RoleTypes.ADMIN.ToString()))
                     {
                         FrameManagerService.MainFrame.Navigate(new AdminView());

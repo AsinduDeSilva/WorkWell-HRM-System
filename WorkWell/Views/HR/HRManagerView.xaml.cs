@@ -1,6 +1,7 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Input;
 using WorkWell.Services;
+using WorkWell.Session;
 using WorkWell.Views.Admin;
 
 namespace WorkWell.Views.HR
@@ -34,6 +35,7 @@ namespace WorkWell.Views.HR
 
         private void txtLogoutClick(object sender, MouseButtonEventArgs e)
         {
+            UserSession.Logout();
             FrameManagerService.MainFrame.Navigate(new Signin());
         }
     }
