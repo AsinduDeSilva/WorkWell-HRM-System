@@ -16,7 +16,7 @@ namespace WorkWell.Data
         public DbSet<Department> Departments { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Payroll> Payrolls { get; set; }
-        public DbSet<Payroll> Leaves { get; set; }
+        public DbSet<Leave> Leaves { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

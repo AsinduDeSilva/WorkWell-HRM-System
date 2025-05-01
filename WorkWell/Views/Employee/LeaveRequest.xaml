@@ -14,31 +14,31 @@
                 <TextBlock Text="Employee Details" FontSize="15" FontWeight="Bold" Margin="0,0,0,10"/>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                     <TextBlock Text="Employee ID:" Width="120" FontSize="14"/>
-                    <TextBox x:Name="txtEmpId" Width="200"/>
+                    <TextBox x:Name="txtEmpId" Width="200" Text="{Binding EmployeeId, Mode=TwoWay}" IsReadOnly="True"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
                     <TextBlock Text="Employee Name:" Width="120" FontSize="14"/>
-                    <TextBox x:Name="txtEmpName" Width="200"/>
+                    <TextBox x:Name="txtEmpName" Width="200" Text="{Binding EmployeeName, Mode=TwoWay}" IsReadOnly="True"/>
                 </StackPanel>
 
                 
                 <TextBlock Text="Leave Details" FontSize="15" FontWeight="Bold" Margin="0,0,0,10"/>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                     <TextBlock Text="Date:" Width="120" FontSize="14"/>
-                    <DatePicker x:Name="dpStartDate" Width="200"/>
+                    <DatePicker x:Name="dpStartDate" Width="200" SelectedDate="{Binding DateForBinding, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                     <TextBlock Text="Leave Type:" Width="120" FontSize="14"/>
-                    <ComboBox x:Name="cmbLeaveType" Width="200">
-                        <ComboBoxItem Content="Sick Leave"/>
-                        <ComboBoxItem Content="Casual Leave"/>
-                        <ComboBoxItem Content="Vacation"/>
+                    <ComboBox x:Name="cmbLeaveType" Width="200" SelectedItem="{Binding SelectedLeaveType, UpdateSourceTrigger=PropertyChanged}" >
+                        <ComboBoxItem Content="MEDICAL"/>
+                        <ComboBoxItem Content="CASUAL"/>
+                        <ComboBoxItem Content="VACATION"/>
                     </ComboBox>
                 </StackPanel>
 
-                
-                <Button Content="Submit Request" Width="150" Height="30" Margin="0,10" HorizontalAlignment="Left"/>
+
+                <Button Content="Submit Request" Width="150" Height="30" Margin="0,10" HorizontalAlignment="Left" Command="{Binding SubmitCommand}"/>
 
                 
                 <TextBlock Text="Remaining Leaves" FontSize="15" FontWeight="Bold" Margin="0,20,0,10"/>
@@ -51,15 +51,34 @@
                 
                 <TextBlock Text="Leave Request History" FontSize="28" FontWeight="Bold" Margin="0,20,0,20"/>
                 <DataGrid x:Name="dgLeaveStatus"
-                          AutoGenerateColumns="False"
-                          HeadersVisibility="Column"
-                          CanUserAddRows="False"
-                          Height="200">
+          ItemsSource="{Binding LeaveHistory}"
+          AutoGenerateColumns="False"
+          HeadersVisibility="Column"
+          CanUserAddRows="False"
+          Height="200"
+          IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Request ID" Binding="{Binding RequestId}" Width="*"/>
-                        <DataGridTextColumn Header="Date" Binding="{Binding StartDate}" Width="*"/>
                         <DataGridTextColumn Header="Leave Type" Binding="{Binding LeaveType}" Width="*"/>
-                        <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="*"/>
+                        <DataGridTextColumn Header="Date" Binding="{Binding Date, StringFormat='dd-MMM-yyyy'}" Width="*"/>
+                        <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="*">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                    <Setter Property="FontWeight" Value="DemiBold"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Status}" Value="APPROVED">
+                                            <Setter Property="Foreground" Value="Green"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Status}" Value="REJECTED">
+                                            <Setter Property="Foreground" Value="Red"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Status}" Value="PENDING">
+                                            <Setter Property="Foreground" Value="Orange"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
 

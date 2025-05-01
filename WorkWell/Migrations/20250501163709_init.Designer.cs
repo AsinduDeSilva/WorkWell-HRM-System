@@ -12,7 +12,7 @@ using WorkWell.Data;
 namespace WorkWell.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250429075706_init")]
+    [Migration("20250501163709_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -64,7 +64,7 @@ namespace WorkWell.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("HRManagerID")
+                    b.Property<int?>("HRManagerID")
                         .HasColumnType("int");
 
                     b.HasKey("DepartmentID");
@@ -187,7 +187,7 @@ namespace WorkWell.Migrations
 
                     b.HasIndex("EmployeeID");
 
-                    b.ToTable("Leave");
+                    b.ToTable("Leaves");
                 });
 
             modelBuilder.Entity("WorkWell.Models.Payroll", b =>
@@ -217,7 +217,7 @@ namespace WorkWell.Migrations
 
                     b.HasIndex("EmployeeID");
 
-                    b.ToTable("Payroll");
+                    b.ToTable("Payrolls");
                 });
 
             modelBuilder.Entity("WorkWell.Models.User", b =>
@@ -260,9 +260,7 @@ namespace WorkWell.Migrations
                 {
                     b.HasOne("WorkWell.Models.HRManager", "HRManager")
                         .WithMany("Departments")
-                        .HasForeignKey("HRManagerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("HRManagerID");
 
                     b.Navigation("HRManager");
                 });

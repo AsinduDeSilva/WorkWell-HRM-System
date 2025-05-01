@@ -55,7 +55,7 @@ namespace WorkWell.Migrations
                     DepartmentID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DepartmentName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    HRManagerID = table.Column<int>(type: "int", nullable: false)
+                    HRManagerID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -64,8 +64,7 @@ namespace WorkWell.Migrations
                         name: "FK_Departments_HRManagers_HRManagerID",
                         column: x => x.HRManagerID,
                         principalTable: "HRManagers",
-                        principalColumn: "HRManagerID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "HRManagerID");
                 });
 
             migrationBuilder.CreateTable(
@@ -125,7 +124,7 @@ namespace WorkWell.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Leave",
+                name: "Leaves",
                 columns: table => new
                 {
                     LeaveID = table.Column<int>(type: "int", nullable: false)
@@ -137,9 +136,9 @@ namespace WorkWell.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Leave", x => x.LeaveID);
+                    table.PrimaryKey("PK_Leaves", x => x.LeaveID);
                     table.ForeignKey(
-                        name: "FK_Leave_Employees_EmployeeID",
+                        name: "FK_Leaves_Employees_EmployeeID",
                         column: x => x.EmployeeID,
                         principalTable: "Employees",
                         principalColumn: "EmployeeID",
@@ -147,7 +146,7 @@ namespace WorkWell.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Payroll",
+                name: "Payrolls",
                 columns: table => new
                 {
                     PayrollID = table.Column<int>(type: "int", nullable: false)
@@ -160,9 +159,9 @@ namespace WorkWell.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Payroll", x => x.PayrollID);
+                    table.PrimaryKey("PK_Payrolls", x => x.PayrollID);
                     table.ForeignKey(
-                        name: "FK_Payroll_Employees_EmployeeID",
+                        name: "FK_Payrolls_Employees_EmployeeID",
                         column: x => x.EmployeeID,
                         principalTable: "Employees",
                         principalColumn: "EmployeeID",
@@ -197,13 +196,13 @@ namespace WorkWell.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Leave_EmployeeID",
-                table: "Leave",
+                name: "IX_Leaves_EmployeeID",
+                table: "Leaves",
                 column: "EmployeeID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Payroll_EmployeeID",
-                table: "Payroll",
+                name: "IX_Payrolls_EmployeeID",
+                table: "Payrolls",
                 column: "EmployeeID");
         }
 
@@ -214,10 +213,10 @@ namespace WorkWell.Migrations
                 name: "Attendances");
 
             migrationBuilder.DropTable(
-                name: "Leave");
+                name: "Leaves");
 
             migrationBuilder.DropTable(
-                name: "Payroll");
+                name: "Payrolls");
 
             migrationBuilder.DropTable(
                 name: "Employees");
