@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WorkWell.ViewModels;
 
 namespace WorkWell.Views.Admin
 {
@@ -20,9 +21,10 @@ namespace WorkWell.Views.Admin
     /// </summary>
     public partial class UpdateHRManagerPage : Page
     {
-        public UpdateHRManagerPage()
+        public UpdateHRManagerPage(int hrManagerID)
         {
             InitializeComponent();
+            DataContext = new UpdateHRManagerViewModel(hrManagerID);
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
