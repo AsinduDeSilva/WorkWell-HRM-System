@@ -47,9 +47,9 @@ namespace WorkWell.ViewModels
                     col.Item().Text($"Employee ID: {employeeId}").FontSize(14);
                     col.Item().Text($"Month: {month}").FontSize(14);
                     col.Item().Text($"Year: {year}").FontSize(14);
-                    col.Item().Text($"Basic Salary: {basicSalary:C}").FontSize(14);
-                    col.Item().Text($"Allowances: {allowances:C}").FontSize(14);
-                    col.Item().Text($"Total Salary: {totalSalary:C}").FontSize(14).Bold();
+                    col.Item().Text($"Basic Salary: {basicSalary:N2}").FontSize(14);
+                    col.Item().Text($"Allowances: {allowances:N2}").FontSize(14);
+                    col.Item().Text($"Total Salary: {totalSalary:N2}").FontSize(14).Bold();
                 });
 
                 page.Footer().AlignCenter().Text(x =>
