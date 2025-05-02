@@ -86,7 +86,6 @@ namespace WorkWell.ViewModels.HR
         {
             try
             {
-                using (var context = new AppDbContext())
                 {
                     var dbLeave = context.Leaves.Find(leave.LeaveID);
                     if (dbLeave != null)
