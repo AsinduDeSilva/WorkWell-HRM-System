@@ -10,31 +10,25 @@
 
     <Grid Background="White">
         <TextBlock HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" Text="Employees" VerticalAlignment="Top" Height="37" Width="172" FontSize="28" FontWeight="SemiBold"/>
-        <Button x:Name="Add_Employee" Content="+ Add Employee" HorizontalAlignment="Left" Height="27" Margin="570,66,0,0" VerticalAlignment="Top" Width="134" Click="Button_Click"/>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="197" Margin="0,66,0,0"/>
-        <Button Content="Search" HorizontalAlignment="Left" Height="23" Margin="217,66,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_1"/>
-        
-        <ComboBox SelectedIndex="0" HorizontalAlignment="Left" Height="23" Margin="93,129,0,0" VerticalAlignment="Top" Width="86">
-            <ComboBoxItem Content="All"/>
-            <ComboBoxItem Content="Finance"/>
-            <ComboBoxItem Content="Marketing"/>
-        </ComboBox>
+        <Button  Command="{Binding AddEmployeeCommand}" x:Name="Add_Employee" Content="+ Add Employee" HorizontalAlignment="Left" Height="27" Margin="570,66,0,0" VerticalAlignment="Top" Width="134"/>
+        <TextBox  Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="197" Margin="0,66,0,0"/>
+        <Button Command="{Binding SearchCommand}" Content="Search" HorizontalAlignment="Left" Height="23" Margin="217,66,0,0" VerticalAlignment="Top" Width="100"/>
+
+        <ComboBox ItemsSource="{Binding Departments}" SelectedItem="{Binding SelectedDepartment, Mode=TwoWay}" SelectedIndex="0" HorizontalAlignment="Left" Height="23" Margin="93,129,0,0" VerticalAlignment="Top" Width="86"/>
+
         <TextBlock HorizontalAlignment="Left" Height="23" Margin="4,129,0,0" TextWrapping="Wrap" Text="Department" VerticalAlignment="Top" FontSize="14"/>
-        <ComboBox SelectedIndex="0" HorizontalAlignment="Left" Height="23" Margin="279,130,0,0" VerticalAlignment="Top" Width="86">
-            <ComboBoxItem Content="All"/>
-            <ComboBoxItem Content="Manager"/>
-            <ComboBoxItem Content="Supervisor"/>
-        </ComboBox>
+        <ComboBox ItemsSource="{Binding Positions}" SelectedItem="{Binding SelectedPosition, Mode=TwoWay}" SelectedIndex="0" HorizontalAlignment="Left" Height="23" Margin="279,130,0,0" VerticalAlignment="Top" Width="86"/>
+
         <TextBlock HorizontalAlignment="Left" Height="23" Margin="215,130,0,0" TextWrapping="Wrap" Text="Position" VerticalAlignment="Top" FontSize="14"/>
-        <DataGrid HorizontalAlignment="Left" Height="335" Margin="4,194,0,0" VerticalAlignment="Top" Width="710" d:ItemsSource="{d:SampleData ItemCount=20}">
+        <DataGrid ItemsSource="{Binding Employees}" SelectedItem="{Binding SelectedEmployee}" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="335" Margin="4,194,0,0" VerticalAlignment="Top" Width="710">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Employee ID" Width="1*"/>
-                <DataGridTextColumn Header="Name" Width="3*"/>
-                <DataGridTextColumn Header="Department" Width="2*"/>
-                <DataGridTextColumn Header="Position" Width="2*"/>
+                <DataGridTextColumn Header="Employee ID" Binding="{Binding EmployeeID}" Width="1*"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="3*"/>
+                <DataGridTextColumn Header="Department" Binding="{Binding Department.DepartmentName}" Width="2*"/>
+                <DataGridTextColumn Header="Position" Binding="{Binding Position}" Width="2*"/>
             </DataGrid.Columns>
             
         </DataGrid>
-        <Button Content="Clear" HorizontalAlignment="Left" Height="23" Margin="411,130,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button Command="{Binding ClearCommand}" Content="Clear" HorizontalAlignment="Left" Height="23" Margin="411,130,0,0" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </Page>

@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using WorkWell.Services;
 using WorkWell.Views;
+using WorkWell.Views.Admin;
 
 namespace WorkWell;
 

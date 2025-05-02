@@ -10,15 +10,14 @@
 
     <Grid Background="White">
         <TextBlock HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" Text="HR Managers" VerticalAlignment="Top" Height="37" Width="172" FontSize="28" FontWeight="SemiBold"/>
-        <Button x:Name="Add_HRManager" Content="+ Add HR Manager" HorizontalAlignment="Left" Height="27" Margin="570,66,0,0" VerticalAlignment="Top" Width="134" Click="Add_Employee_Click"/>
+        <Button Name="Add_HRManager" Command="{Binding AddHRManagerCommand}" Content="+ Add HR Manager" HorizontalAlignment="Left" Height="27" Margin="570,66,0,0" VerticalAlignment="Top" Width="134"/>
 
-        <DataGrid Name="DataGrid_HRManagers" HorizontalAlignment="Left" Height="335" Margin="4,129,0,0" VerticalAlignment="Top" Width="710" d:ItemsSource="{d:SampleData ItemCount=5}" AutoGenerateColumns="False">
+        <DataGrid ItemsSource="{Binding NewList}" SelectedItem="{Binding SelectedItem}" Name="DataGrid_HRManagers" HorizontalAlignment="Left" Height="335" Margin="4,129,0,0" VerticalAlignment="Top" Width="710" AutoGenerateColumns="False" CanUserAddRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Manager ID" Binding="{Binding [Manager ID]}" Width="1*"/>
+                <DataGridTextColumn Header="Manager ID" Binding="{Binding HRManagerID}" Width="1*"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="3*"/>
                 <DataGridTextColumn Header="Departments" Binding="{Binding Departments}" Width="2*"/>
             </DataGrid.Columns>
-
         </DataGrid>
     </Grid>
 </Page>

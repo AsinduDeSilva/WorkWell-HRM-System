@@ -51,7 +51,7 @@ namespace WorkWell.ViewModels.HR
                     "Confirm Approval", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     UpdateLeaveStatus(leave, "APPROVED");
-                    switch ()
+                    switch ("")
                     {
                         case "MEDICAL":
                             UserSession.CurrentUser.Employee.SickLeaves--;

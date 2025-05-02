@@ -5,88 +5,96 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d"
       Title="Attendance"
-      Background="#F4F6F7">
+      Background="White">
 
     <Grid>
-        <StackPanel>
-            <TextBlock Text="Employee Attendance"
-                       FontSize="28"
-                       FontWeight="Bold"
-                       Foreground="#2C3E50"
-                       HorizontalAlignment="Left"
-                       Margin="0,0,0,20"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-            <DataGrid x:Name="AttendanceGrid"
-                      AutoGenerateColumns="False"
-                      CanUserAddRows="False"
-                      Background="White"
-                      BorderBrush="#BDC3C7"
-                      BorderThickness="1"
-                      RowHeight="42"
-                      FontSize="15"
-                      FontFamily="Segoe UI"
-                      SelectionMode="Single"
-                      HorizontalAlignment="Stretch"
-                      IsReadOnly="False">
+        <!-- Title -->
+        <TextBlock Text="Employee Attendance"
+                   FontSize="28"
+                   FontWeight="Bold"
+                   Foreground="#2C3E50"
+                   HorizontalAlignment="Left"
+                   Margin="0,0,0,20"/>
 
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Employee ID" Binding="{Binding EmployeeId}" Width="*" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="Employee Name" Binding="{Binding EmployeeName}" Width="2*" IsReadOnly="True"/>
+        <!-- DataGrid with Scroll -->
+        <DataGrid x:Name="AttendanceGrid"
+                  Grid.Row="1"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  Background="White"
+                  BorderBrush="#BDC3C7"
+                  BorderThickness="1"
+                  RowHeight="42"
+                  FontSize="15"
+                  FontFamily="Segoe UI"
+                  SelectionMode="Single"
+                  HorizontalAlignment="Stretch"
+                  IsReadOnly="False"
+                  ItemsSource="{Binding EmployeeAttenDanceList, Mode=TwoWay}"
+                  VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Auto">
 
-                    <!-- Date column with DatePicker, showing only date -->
-                    <DataGridTemplateColumn Header="Date" Width="*">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Date, StringFormat='{}{0:yyyy-MM-dd}'}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                        <DataGridTemplateColumn.CellEditingTemplate>
-                            <DataTemplate>
-                                <DatePicker SelectedDate="{Binding Date, Mode=TwoWay}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellEditingTemplate>
-                    </DataGridTemplateColumn>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Employee ID" Binding="{Binding EmployeeId}" Width="*" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Employee Name" Binding="{Binding EmployeeName}" Width="2*" IsReadOnly="True"/>
 
-                    <!-- Arrive Time -->
-                    <DataGridTemplateColumn Header="Arrive Time" Width="*">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding ArriveTime}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                        <DataGridTemplateColumn.CellEditingTemplate>
-                            <DataTemplate>
-                                <TextBox Text="{Binding ArriveTime, Mode=TwoWay}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellEditingTemplate>
-                    </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Date" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Date, StringFormat='{}{0:yyyy-MM-dd}'}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding Date, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
 
-                    <!-- Departure Time -->
-                    <DataGridTemplateColumn Header="Departure Time" Width="*">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding DepartureTime}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                        <DataGridTemplateColumn.CellEditingTemplate>
-                            <DataTemplate>
-                                <TextBox Text="{Binding DepartureTime, Mode=TwoWay}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellEditingTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
+                <DataGridTemplateColumn Header="Arrive Time" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ArriveTime}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding ArriveTime, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
 
-            <!-- Submit Button -->
-            <Button Content="Submit Attendance"
-                    Width="180"
-                    Height="40"
-                    Margin="0,20,0,0"
-                    Background="#2980B9"
-                    Foreground="White"
-                    FontWeight="Bold"
-                    HorizontalAlignment="Right"
-                    Click="SubmitAttendance_Click" />
-        </StackPanel>
+                <DataGridTemplateColumn Header="Departure Time" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DepartureTime}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding DepartureTime, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Submit Button -->
+        <Button Content="Submit Attendance"
+                Grid.Row="2"
+                Width="180"
+                Height="40"
+                Margin="0,20,0,0"
+                Background="#2980B9"
+                Foreground="White"
+                FontWeight="Bold"
+                HorizontalAlignment="Right"
+                Command="{Binding SubmitCommand}"/>
     </Grid>
 </Page>
