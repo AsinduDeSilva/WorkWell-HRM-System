@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using WorkWell.Data;
+using WorkWell.Models;
 using WorkWell.MVVM;
 using WorkWell.Session;
 
@@ -11,6 +12,7 @@ namespace WorkWell.ViewModels
 {
     internal class PayrollPageViewModel : ViewModelBase
     {
+        public Employee Employee { get; set; }
         private int employeeId;
         private string employeeName;
         private int month;
@@ -105,6 +107,28 @@ namespace WorkWell.ViewModels
 
             LoadPayroll();
 
+        }
+        
+        public PayrollPageViewModel(Employee employee)
+        {
+            context = new AppDbContext();
+            EmployeeId = employee.EmployeeID;
+            EmployeeName = employee.Name;
+
+            
+            var payroll = context.Payrolls
+                .Where(p => p.EmployeeID == employee.EmployeeID)
+                .OrderByDescending(p => p.Year)
+                .ThenByDescending(p => p.Month)
+                .FirstOrDefault();
+
+            if (payroll != null)
+            {
+                Month = payroll.Month;
+                Year = payroll.Year;
+                BasicSalary = payroll.BaseSalary;
+                Allowances = payroll.Allowances;
+            }
         }
 
         private void LoadPayroll()
