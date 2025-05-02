@@ -19,19 +19,19 @@
         <TextBlock HorizontalAlignment="Left" Height="21" Margin="10,186,0,0" TextWrapping="Wrap" Text="Gender" VerticalAlignment="Top"  FontSize="14" Width="82"/>
 
         <TextBox HorizontalAlignment="Left" Height="25" Margin="149,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="13" Width="435"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="149,144,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="13" Width="435"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="149,104,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="13" Width="435"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="149,302,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="13" Width="435"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="149,342,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="13" Width="435"/>
-        <RadioButton Content="Male" HorizontalAlignment="Left" Margin="150,186,0,0" FontSize="13"  VerticalAlignment="Top"/>
-        <RadioButton Content="Female" HorizontalAlignment="Left" Margin="264,186,0,0" FontSize="13"  VerticalAlignment="Top" Checked="RadioButton_Checked"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="149,144,0,0" TextWrapping="Wrap" Text="{Binding NIC}" VerticalAlignment="Top" FontSize="13" Width="435"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="149,104,0,0" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" FontSize="13" Width="435"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="149,302,0,0" TextWrapping="Wrap" Text="{Binding Phone}" VerticalAlignment="Top" FontSize="13" Width="435"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="149,342,0,0" TextWrapping="Wrap" Text="{Binding Email}" VerticalAlignment="Top" FontSize="13" Width="435"/>
+        <RadioButton IsChecked="{Binding MaleSelected, Mode=TwoWay}" Content="Male" HorizontalAlignment="Left" Margin="150,186,0,0" FontSize="13"  VerticalAlignment="Top"/>
+        <RadioButton Content="Female" HorizontalAlignment="Left" Margin="264,186,0,0" FontSize="13"  VerticalAlignment="Top"/>
 
-        <Button Content="Reset" HorizontalAlignment="Left" Height="27" Margin="321,416,0,0" FontSize="13" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Submit" HorizontalAlignment="Left" Height="27" Margin="464,416,0,0" FontSize="13" VerticalAlignment="Top" Width="120"/>
-        <CheckBox Content="Finance" HorizontalAlignment="Left" Margin="150,226,0,0" FontSize="13" VerticalAlignment="Top"/>
-        <CheckBox Content="Finance" HorizontalAlignment="Left" Margin="264,226,0,0" FontSize="13" VerticalAlignment="Top"/>
-        <CheckBox Content="Finance" HorizontalAlignment="Left" Margin="378,226,0,0" FontSize="13" VerticalAlignment="Top"/>
-        <CheckBox Content="Finance" HorizontalAlignment="Left" Margin="150,256,0,0" FontSize="13" VerticalAlignment="Top"/>
-        <CheckBox Content="Finance" HorizontalAlignment="Left" Margin="264,256,0,0" FontSize="13" VerticalAlignment="Top"/>
+        <Button Content="Reset" Command="{Binding ResetFormCommand}" HorizontalAlignment="Left" Height="27" Margin="321,416,0,0" FontSize="13" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Submit" Command="{Binding AddHRManagerCommand}" HorizontalAlignment="Left" Height="27" Margin="464,416,0,0" FontSize="13" VerticalAlignment="Top" Width="120"/>
+        <CheckBox Content="Finance" IsChecked="{Binding Finance}" HorizontalAlignment="Left" Margin="150,226,0,0" FontSize="13" VerticalAlignment="Top"/>
+        <CheckBox Content="Marketing" IsChecked="{Binding Marketing}" HorizontalAlignment="Left" Margin="264,226,0,0" FontSize="13" VerticalAlignment="Top"/>
+        <CheckBox Content="IT" IsChecked="{Binding IT}" HorizontalAlignment="Left" Margin="378,226,0,0" FontSize="13" VerticalAlignment="Top"/>
+        <CheckBox Content="Sales" IsChecked="{Binding Sales}" HorizontalAlignment="Left" Margin="150,256,0,0" FontSize="13" VerticalAlignment="Top"/>
+        <CheckBox Content="Operations" IsChecked="{Binding Operations}" HorizontalAlignment="Left" Margin="264,256,0,0" FontSize="13" VerticalAlignment="Top"/>
     </Grid>
 </Page>

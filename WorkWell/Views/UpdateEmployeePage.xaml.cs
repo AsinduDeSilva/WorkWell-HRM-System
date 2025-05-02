@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WorkWell.ViewModels;
 
 namespace WorkWell.Views
 {
@@ -20,9 +21,10 @@ namespace WorkWell.Views
     /// </summary>
     public partial class UpdateEmployeePage : Page
     {
-        public UpdateEmployeePage()
+        public UpdateEmployeePage(int employeeID)
         {
             InitializeComponent();
+            DataContext = new UpdateEmployeePageViewModel(employeeID);
         }
     }
 }

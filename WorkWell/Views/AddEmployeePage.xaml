@@ -1,4 +1,4 @@
-﻿<Page x:Class="WorkWell.Views.EmployeeForm"
+﻿<Page x:Class="WorkWell.Views.AddEmployeePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -21,25 +21,19 @@
         <TextBlock HorizontalAlignment="Left" Height="21" Margin="10,386,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="82"  FontSize="14" RenderTransformOrigin="0.496,8.419"/>
         <TextBlock HorizontalAlignment="Left" Height="21" Margin="10,186,0,0" TextWrapping="Wrap" Text="Gender" VerticalAlignment="Top"  FontSize="14" Width="82"/>
 
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="149,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="13" Width="435"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="149,304,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="13" Width="435"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="149,144,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="13" Width="435"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="149,104,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="13" Width="435"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="149,344,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="13" Width="435"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="149,384,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="13" Width="435"/>
-        <ComboBox HorizontalAlignment="Left" Height="25" Margin="149,224,0,0" VerticalAlignment="Top" Width="217">
-            <ComboBoxItem Content="Finance"/>
-            <ComboBoxItem Content="Marketing"/>
-        </ComboBox>
-        <ComboBox HorizontalAlignment="Left" Height="25" Margin="150,264,0,0" VerticalAlignment="Top" Width="217">
-            <ComboBoxItem Content="Manager"/>
-            <ComboBoxItem Content="Supervisor"/>
-        </ComboBox>
-        <RadioButton Content="Male" HorizontalAlignment="Left" Margin="150,186,0,0" FontSize="13"  VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="149,64,0,0" TextWrapping="Wrap" IsEnabled="False" Text="" VerticalAlignment="Top" FontSize="13" Width="435"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="149,304,0,0" TextWrapping="Wrap" Text="{Binding Salary}" VerticalAlignment="Top" FontSize="13" Width="435"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="149,144,0,0" TextWrapping="Wrap" Text="{Binding NIC}" VerticalAlignment="Top" FontSize="13" Width="435"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="149,104,0,0" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" FontSize="13" Width="435"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="149,344,0,0" TextWrapping="Wrap" Text="{Binding Phone}" VerticalAlignment="Top" FontSize="13" Width="435"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="149,384,0,0" TextWrapping="Wrap" Text="{Binding Email}" VerticalAlignment="Top" FontSize="13" Width="435"/>
+        <ComboBox ItemsSource="{Binding Departments}" SelectedItem="{Binding SelectedDepartment}" HorizontalAlignment="Left" Height="25" Margin="149,224,0,0" VerticalAlignment="Top" Width="217"/>
+        <ComboBox ItemsSource="{Binding Positions}" SelectedItem="{Binding SelectedPosition}" HorizontalAlignment="Left" Height="25" Margin="150,264,0,0" VerticalAlignment="Top" Width="217"/>
+        <RadioButton IsChecked="{Binding MaleSelected, Mode=TwoWay}" Content="Male" HorizontalAlignment="Left" Margin="150,186,0,0" FontSize="13"  VerticalAlignment="Top"/>
         <RadioButton Content="Female" HorizontalAlignment="Left" Margin="264,186,0,0" FontSize="13"  VerticalAlignment="Top" Checked="RadioButton_Checked"/>
 
-        <Button Content="Reset" HorizontalAlignment="Left" Height="27" Margin="321,445,0,0" FontSize="13" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Submit" HorizontalAlignment="Left" Height="27" Margin="464,445,0,0" FontSize="13" VerticalAlignment="Top" Width="120"/>
+        <Button Command="{Binding ResetCommand}" Content="Reset" HorizontalAlignment="Left" Height="27" Margin="321,445,0,0" FontSize="13" VerticalAlignment="Top" Width="120"/>
+        <Button Command="{Binding AddEmployeeCommand}" Content="Submit" HorizontalAlignment="Left" Height="27" Margin="464,445,0,0" FontSize="13" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Page>

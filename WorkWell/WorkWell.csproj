@@ -30,8 +30,4 @@
     <PackageReference Include="QuestPDF" Version="2025.4.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
-
 </Project>
