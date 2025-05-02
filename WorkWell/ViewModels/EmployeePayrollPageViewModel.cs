@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Windows;
 using System.Windows.Input;
 using WorkWell.Data;
@@ -17,6 +18,7 @@ namespace WorkWell.ViewModels
             EmployeeName = name;
             context = new AppDbContext();
             SubmitCommand = new RelayCommand(execute => SavePayroll());
+            LoadSalaryFromDatabase(employeeId);
         }
 
         private int employeeId;
@@ -37,7 +39,7 @@ namespace WorkWell.ViewModels
         public decimal BasicSalary
         {
             get => basicSalary;
-            set { basicSalary = value; OnPropertyChanged(); UpdateTotalSalary(); }
+            set { basicSalary = value; OnPropertyChanged(nameof(BasicSalary)); UpdateTotalSalary(); }
         }
 
         private decimal allowances;
@@ -97,6 +99,16 @@ namespace WorkWell.ViewModels
                 MessageBox.Show($"Error submitting payroll: {ex.Message}");
             }
         }
+
+        private void LoadSalaryFromDatabase(int employeeId)
+        {
+            var emp = context.Employees.FirstOrDefault(e => e.EmployeeID == employeeId);
+            if (emp != null)
+            {
+                BasicSalary = emp.Salary;
+            }
+        }
+
 
     }
 }
