@@ -78,13 +78,13 @@ namespace WorkWell.ViewModels
             }
 
             var user = context.Users.Find(UserSession.CurrentUser.UserID);
-            if (user == null || user.Password != CurrentPassword)
+            if (user == null ||  PasswordHashingService.Verify(CurrentPassword, user.Password) )
             {
                 MessageBox.Show("Current password is incorrect.");
                 return;
             }
 
-            user.Password = NewPassword;
+            user.Password = PasswordHashingService.Hash(NewPassword);
             context.SaveChanges();
 
             MessageBox.Show("Password changed successfully.");
