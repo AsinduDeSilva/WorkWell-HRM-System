@@ -176,7 +176,7 @@ namespace WorkWell.ViewModels
                 {
                     Email = email,
                     Role = RoleTypes.HRM.ToString(),
-                    Password = $"{NIC}.123"
+                    Password = PasswordHashingService.Hash($"{NIC}.123")
                 },
                 Departments = departments
             };

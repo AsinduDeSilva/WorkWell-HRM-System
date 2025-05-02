@@ -180,7 +180,7 @@ namespace WorkWell.ViewModels
                 {
                     Email = Email,
                     Role = "Employee",
-                    Password = $"{NIC}.123"
+                    Password = PasswordHashingService.Hash($"{NIC}.123") 
                 },
                 Gender = gender
             };
