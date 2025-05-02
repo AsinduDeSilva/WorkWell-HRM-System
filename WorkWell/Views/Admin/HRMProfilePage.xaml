@@ -24,7 +24,7 @@
     />
 
         <StackPanel Grid.Column="1" Margin="60,0,0,0">
-            <TextBlock Text="Dewmi Samadhi" FontSize="26" Margin="0 0 0 40"/>
+            <TextBlock Text="{Binding Name}" FontSize="26" Margin="0 0 0 40"/>
 
             <Grid>
                 <Grid.ColumnDefinitions>
