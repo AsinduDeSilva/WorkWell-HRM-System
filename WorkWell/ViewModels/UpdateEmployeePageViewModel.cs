@@ -18,7 +18,17 @@ namespace WorkWell.ViewModels
     {
         private int employeeID;
 
-        public List<string> Departments { get; } = new List<string> { "All", "Finance", "Marketing", "IT", "Sales", "Operations" };
+        private List<string> departments;
+        public List<string> Departments
+        {
+            get => departments;
+            set
+            {
+                departments = value;
+                OnPropertyChanged();
+            }
+        }
+
         public List<string> Positions { get; } = new List<string> { "All", "Employee", "Manager", "Supervisor" };
 
         public int EmployeeID
@@ -185,6 +195,14 @@ namespace WorkWell.ViewModels
         {
             this.employeeID = employeeID;
             LoadEmployeeData();
+            LoadDepartments();
+        }
+        private void LoadDepartments()
+        {
+            using (var context = new AppDbContext())
+            {
+                Departments = context.Departments.Select(d => d.DepartmentName).ToList();
+            }
         }
         private void LoadEmployeeData()
         {

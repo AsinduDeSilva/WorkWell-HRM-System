@@ -28,10 +28,12 @@
 
         <Button Content="Back" Command="{Binding GoBackCommand}" HorizontalAlignment="Left" Height="27" Margin="321,416,0,0" FontSize="13" VerticalAlignment="Top" Width="120"/>
         <Button Content="Update" Command="{Binding UpdateHRManagerCommand}" IsEnabled="{Binding EnableSubmit, Mode=TwoWay}" HorizontalAlignment="Left" Height="27" Margin="464,416,0,0" FontSize="13" VerticalAlignment="Top" Width="120"/>
-        <CheckBox IsChecked="{Binding Finance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Finance" HorizontalAlignment="Left" Margin="150,226,0,0" FontSize="13" VerticalAlignment="Top"/>
-        <CheckBox IsChecked="{Binding Marketing, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Marketing" HorizontalAlignment="Left" Margin="264,226,0,0" FontSize="13" VerticalAlignment="Top"/>
-        <CheckBox IsChecked="{Binding IT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="IT" HorizontalAlignment="Left" Margin="378,226,0,0" FontSize="13" VerticalAlignment="Top"/>
-        <CheckBox IsChecked="{Binding Sales, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Sales" HorizontalAlignment="Left" Margin="150,256,0,0" FontSize="13" VerticalAlignment="Top"/>
-        <CheckBox IsChecked="{Binding Operations, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Operations" HorizontalAlignment="Left" Margin="264,256,0,0" FontSize="13" VerticalAlignment="Top"/>
+        <ItemsControl ItemsSource="{Binding DepartmentOptionsUpdate}" Margin="150,226,0,0">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <CheckBox Content="{Binding Name}" IsChecked="{Binding IsSelected, Mode=TwoWay}" FontSize="13" Margin="10,0,0,0"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </Page>

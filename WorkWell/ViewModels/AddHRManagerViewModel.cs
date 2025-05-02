@@ -2,6 +2,7 @@
 using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,22 @@ using WorkWell.Views.Admin;
 
 namespace WorkWell.ViewModels
 {
+    public class DepartmentOption : ViewModelBase
+    {
+        public string Name { get; set; }
+
+        private bool isSelected;
+        public bool IsSelected
+        {
+            get => isSelected;
+            set
+            {
+                isSelected = value;
+                OnPropertyChanged();
+            }
+        }
+    }
+
     internal class AddHRManagerViewModel : ViewModelBase
     {
         private AppDbContext context;
@@ -24,6 +41,7 @@ namespace WorkWell.ViewModels
             context = new AppDbContext();
             hrManagers = context.HRManagers.Include(hrm => hrm.User).ToList();
             MaleSelected = true;
+            LoadDepartments();
         }
 
         private string name;
@@ -114,6 +132,20 @@ namespace WorkWell.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        public ObservableCollection<DepartmentOption> DepartmentOptions { get; set; } = [];
+
+        private void LoadDepartments()
+        {
+            using (var context = new AppDbContext())
+            {
+                var departments = context.Departments.Select(d => d.DepartmentName).ToList();
+                DepartmentOptions = new ObservableCollection<DepartmentOption>(
+                    departments.Select(d => new DepartmentOption { Name = d })
+                );
+            }
+        }
+
 
         public void AddHRManager()
         {
