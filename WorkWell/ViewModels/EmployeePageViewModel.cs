@@ -56,7 +56,7 @@ namespace WorkWell.ViewModels
             {
                 selectedEmployee = value;
                 OnPropertyChanged();
-                FrameManagerService.SubFrame.Navigate(new UpdateEmployeePage(selectedEmployee.EmployeeID));
+                FrameManagerService.SubFrame.Navigate(new EmployeeProfile(selectedEmployee.EmployeeID));
             }
         }
 

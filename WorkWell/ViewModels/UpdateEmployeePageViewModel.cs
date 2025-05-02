@@ -9,6 +9,7 @@ using WorkWell.Data;
 using WorkWell.Enums;
 using WorkWell.MVVM;
 using WorkWell.Services;
+using WorkWell.Views;
 using WorkWell.Views.Admin;
 
 namespace WorkWell.ViewModels
@@ -176,7 +177,7 @@ namespace WorkWell.ViewModels
             EnableSubmit = true;
         }
 
-        public RelayCommand BackCommand => new RelayCommand(execute => FrameManagerService.SubFrame.Navigate(new EmployeePage()));
+        public RelayCommand BackCommand => new RelayCommand(execute => FrameManagerService.SubFrame.Navigate(new EmployeeProfile(EmployeeID)));
 
         public RelayCommand UpdateEmployeeCommand => new RelayCommand(execute => UpdateEmployee());
 

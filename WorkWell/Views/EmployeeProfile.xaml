@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WorkWell.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="640" d:DesignWidth="768"
       Title="EmployeeProfile">
 
     <Grid Background="White" Margin="20">
@@ -24,7 +24,7 @@
         />
 
         <StackPanel Grid.Column="1" Margin="60,0,0,0">
-            <TextBlock Text="Dewmi Samadhi" FontSize="26" Margin="0 0 0 40"/>
+            <TextBlock Text="{Binding Name}" FontSize="26" Margin="0 0 0 40"/>
 
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -43,42 +43,51 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
                 <TextBlock Text="User ID" Grid.Row="0" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
-                <TextBlock Text="001" Grid.Row="0" Grid.Column="1"/>
+                <TextBlock Text="{Binding EmployeeID}" Grid.Row="0" Grid.Column="1"/>
 
                 <TextBlock Text="Name" Grid.Row="1" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
-                <TextBlock Text="Dewmi Samadhi" Grid.Row="1" Grid.Column="1"/>
+                <TextBlock Text="{Binding Name}" Grid.Row="1" Grid.Column="1"/>
 
                 <TextBlock Text="NIC" Grid.Row="2" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
-                <TextBlock Text="123456789" Grid.Row="2" Grid.Column="1"/>
+                <TextBlock Text="{Binding NIC}" Grid.Row="2" Grid.Column="1"/>
 
                 <TextBlock Text="Department" Grid.Row="3" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
-                <TextBlock Text="IT" Grid.Row="3" Grid.Column="1"/>
+                <TextBlock Text="{Binding Department}" Grid.Row="3" Grid.Column="1"/>
 
                 <TextBlock Text="Position" Grid.Row="4" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
-                <TextBlock Text="Web Developer and Designer" Grid.Row="4" Grid.Column="1"/>
+                <TextBlock Text="{Binding Position}" Grid.Row="4" Grid.Column="1"/>
 
                 <TextBlock Text="Contact" Grid.Row="5" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
-                <TextBlock Text="123 456 7890" Grid.Row="5" Grid.Column="1"/>
+                <TextBlock Text="{Binding Phone}" Grid.Row="5" Grid.Column="1"/>
 
                 <TextBlock Text="Gender" Grid.Row="6" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
-                <TextBlock Text="Female" Grid.Row="6" Grid.Column="1"/>
+                <TextBlock Text="{Binding Gender}" Grid.Row="6" Grid.Column="1"/>
 
                 <TextBlock Text="Email" Grid.Row="7" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
-                <TextBlock Text="dewmi@gmail.com" Grid.Row="7" Grid.Column="1"/>
+                <TextBlock Text="{Binding Email}" Grid.Row="7" Grid.Column="1"/>
 
                 <TextBlock Text="Salary" Grid.Row="8" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
-                <TextBlock Text="$70" Grid.Row="8" Grid.Column="1"/>
+                <TextBlock Text="{Binding Salary}" Grid.Row="8" Grid.Column="1"/>
 
-                <TextBlock Text="Remaining Leave Count" Grid.Row="9" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
-                <TextBlock Text="15" Grid.Row="9" Grid.Column="1"/>
+                <TextBlock Text="Medical Leaves" Grid.Row="9" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
+                <TextBlock Text="{Binding SickLeaves}" Grid.Row="9" Grid.Column="1"/>
+
+                <TextBlock Text="Casual Leaves" Grid.Row="10" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
+                <TextBlock Text="{Binding CasualLeaves}" Grid.Row="10" Grid.Column="1"/>
+
+                <TextBlock Text="Vacation Leaves" Grid.Row="11" Grid.Column="0" FontWeight="Bold" Margin="0,0,0,15"/>
+                <TextBlock Text="{Binding VacationLeaves}" Grid.Row="11" Grid.Column="1"/>
             </Grid>
 
             <StackPanel Orientation="Horizontal" Margin="0,30,0,0">
-                <Button Content="Update" Width="100" Height="30" Background="Black" Foreground="White" Margin="0,0,20,0"/>
-                <Button Content="Delete" Width="100" Height="30" Background="Black" Foreground="White"/>
+                <Button Command="{Binding UpdateCommand}" Content="Update" Width="100" Height="30" Background="Black" Foreground="White" Margin="0,0,20,0"/>
+                <Button Command="{Binding DeleteCommand}" Content="Delete" Width="100" Height="30" Background="Black" Foreground="White"/>
+                <Button Command="{Binding PayrollCommand}" Content="Payroll" Width="100" Height="30" Background="Black" Foreground="White" Margin="20,0,0,0"/>
             </StackPanel>
         </StackPanel>
         <Ellipse HorizontalAlignment="Center" Height="190" Margin="0,62,0,0" Stroke="Black" VerticalAlignment="Top" Width="190" StrokeThickness="5"/>
