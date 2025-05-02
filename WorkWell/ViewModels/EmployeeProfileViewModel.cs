@@ -11,6 +11,7 @@ using WorkWell.MVVM;
 using WorkWell.Services;
 using WorkWell.Views;
 using WorkWell.Views.Admin;
+using WorkWell.Views.HR;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WorkWell.ViewModels
@@ -173,6 +174,8 @@ namespace WorkWell.ViewModels
 
         public RelayCommand UpdateCommand => new RelayCommand(execute => FrameManagerService.SubFrame.Navigate(new UpdateEmployeePage(EmployeeID)));
         public RelayCommand DeleteCommand => new RelayCommand(execute => DeleteEmployee(EmployeeID));
+
+        public RelayCommand PayrollCommand => new RelayCommand(execute => FrameManagerService.SubFrame.Navigate(new EmployeePayrollPage(EmployeeID, Name)));
 
         public void LoadEmployeeData(int employeeID)
         {

@@ -22,7 +22,17 @@ namespace WorkWell.ViewModels
         private List<Employee> employees;
         private List<Employee> allEmployees;
 
-        public List<string> Departments { get; } = new List<string> { "All", "Finance", "Marketing", "IT", "Sales", "Operations" };
+        private List<string> departments;
+        public List<string> Departments
+        {
+            get => departments;
+            set
+            {
+                departments = value;
+                OnPropertyChanged();
+            }
+        }
+
         public List<string> Positions { get; } = new List<string> { "All","Employee", "Manager", "Supervisor" };
 
         public List<Employee> Employees
@@ -89,6 +99,7 @@ namespace WorkWell.ViewModels
             context = new AppDbContext();
             allEmployees = context.Employees.Include(emp => emp.Department).ToList();
             Employees = new List<Employee>(allEmployees);
+            LoadDepartments();
 
         }
 
@@ -97,6 +108,14 @@ namespace WorkWell.ViewModels
         public RelayCommand SearchCommand => new RelayCommand(execute => Search());
 
         public RelayCommand ClearCommand => new RelayCommand(execute => ClearSearch());
+
+        private void LoadDepartments()
+        {
+            using (var context = new AppDbContext())
+            {
+                Departments = context.Departments.Select(d => d.DepartmentName).ToList();
+            }
+        }
 
         public void AddEmployee()
         {

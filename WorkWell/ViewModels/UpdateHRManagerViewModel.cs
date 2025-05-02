@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,21 @@ using WorkWell.Views.Admin;
 
 namespace WorkWell.ViewModels
 {
+    public class DepartmentOptionUpdate : ViewModelBase
+    {
+        public string Name { get; set; }
+
+        private bool isSelected;
+        public bool IsSelected
+        {
+            get => isSelected;
+            set
+            {
+                isSelected = value;
+                OnPropertyChanged();
+            }
+        }
+    }
     internal class UpdateHRManagerViewModel : ViewModelBase
     {
         private AppDbContext context;
@@ -164,10 +180,24 @@ namespace WorkWell.ViewModels
             EnableSubmit = true;
         }
 
+        public ObservableCollection<DepartmentOptionUpdate> DepartmentOptionsUpdate { get; set; } = [];
+
+        private void LoadDepartments()
+        {
+            using (var context = new AppDbContext())
+            {
+                var departments = context.Departments.Select(d => d.DepartmentName).ToList();
+                DepartmentOptionsUpdate = new ObservableCollection<DepartmentOptionUpdate>(
+                    departments.Select(d => new DepartmentOptionUpdate { Name = d })
+                );
+            }
+        }
+
         public UpdateHRManagerViewModel(int hrManagerID)
         {
             HrManagerID = hrManagerID;
             context = new AppDbContext();
+            LoadDepartments();
 
             foreach (var hrManager in context.HRManagers.Include(hrm => hrm.User).Include(hrm => hrm.Departments).ToList())
             {
@@ -179,27 +209,13 @@ namespace WorkWell.ViewModels
                     email = hrManager.User.Email;
                     foreach (var hrm in hrManager.Departments)
                     {
-                        if (hrm.DepartmentName.ToLower() == "Finance".ToLower())
+                        var match = DepartmentOptionsUpdate.FirstOrDefault(d => d.Name.Equals(hrm.DepartmentName, StringComparison.OrdinalIgnoreCase));
+                        if (match != null)
                         {
-                            Finance = true;
-                        }
-                        else if (hrm.DepartmentName.ToLower() == "IT".ToLower())
-                        {
-                            IT = true;
-                        }
-                        else if (hrm.DepartmentName.ToLower() == "Marketing".ToLower())
-                        {
-                            Marketing = true;
-                        }
-                        else if (hrm.DepartmentName.ToLower() == "Sales".ToLower())
-                        {
-                            Sales = true;
-                        }
-                        else if (hrm.DepartmentName.ToLower() == "Operations".ToLower())
-                        {
-                            Operations = true;
+                            match.IsSelected = true;
                         }
                     }
+
                     EnableSubmit = false;
                 }
             }

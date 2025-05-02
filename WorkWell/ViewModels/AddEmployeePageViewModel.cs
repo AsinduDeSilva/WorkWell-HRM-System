@@ -21,7 +21,17 @@ namespace WorkWell.ViewModels
 
         private List<Employee> employees;
 
-        public List<string> Departments { get; } = new List<string> {"Finance", "Marketing", "IT", "Sales", "Operations" };
+        private List<string> departments;
+        public List<string> Departments
+        {
+            get => departments;
+            set
+            {
+                departments = value;
+                OnPropertyChanged();
+            }
+        }
+
         public List<string> Positions { get; } = new List<string> {"Employee", "Manager", "Supervisor" };
 
         public List<Employee> Employees
@@ -127,10 +137,20 @@ namespace WorkWell.ViewModels
         {
             context = new AppDbContext();
             Employees = context.Employees.Include(emp => emp.Department).Include(emp => emp.User).ToList();
+            LoadDepartments();
         }
         public RelayCommand AddEmployeeCommand => new RelayCommand(execute => AddEmployee());
 
         public RelayCommand ResetCommand => new RelayCommand(execute => FrameManagerService.SubFrame.Navigate(new AddEmployeePage()));
+
+        private void LoadDepartments()
+        {
+            using (var context = new AppDbContext())
+            {
+                Departments = context.Departments.Select(d => d.DepartmentName).ToList();
+            }
+        }
+
         private void AddEmployee()
         {
             foreach (var emp in Employees)
@@ -179,7 +199,7 @@ namespace WorkWell.ViewModels
                 User = new User
                 {
                     Email = Email,
-                    Role = "Employee",
+                    Role = RoleTypes.EMPLOYEE.ToString(),
                     Password = PasswordHashingService.Hash($"{NIC}.123") 
                 },
                 Gender = gender
