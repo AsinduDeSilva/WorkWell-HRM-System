@@ -199,7 +199,7 @@ namespace WorkWell.ViewModels
                 User = new User
                 {
                     Email = Email,
-                    Role = "Employee",
+                    Role = RoleTypes.EMPLOYEE.ToString(),
                     Password = $"{NIC}.123"
                 },
                 Gender = gender
