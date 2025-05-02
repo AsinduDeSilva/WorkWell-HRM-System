@@ -166,6 +166,7 @@ namespace WorkWell.ViewModels
                 departments.Add(context.Departments.FirstOrDefault(d => d.DepartmentName == "Operations"));
             }
             
+
             var hrManager = new HRManager
             {
                 Name = Name,
@@ -175,7 +176,7 @@ namespace WorkWell.ViewModels
                 {
                     Email = email,
                     Role = RoleTypes.HRM.ToString(),
-                    Password = PasswordGenerator.GeneratePassword()
+                    Password = $"{NIC}.123"
                 },
                 Departments = departments
             };

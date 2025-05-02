@@ -8,7 +8,33 @@
       d:DesignHeight="640" d:DesignWidth="768"
       Title="UpdateEmployeePage">
 
-    <Grid>
-        
+    <Grid Background="White">
+        <TextBlock HorizontalAlignment="Left" Margin="0" TextWrapping="Wrap" Text="Update Employee" VerticalAlignment="Top" FontSize="28" FontWeight="SemiBold"/>
+        <TextBlock HorizontalAlignment="Left" Height="21" Margin="10,106,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" FontSize="14" Width="82"/>
+        <TextBlock HorizontalAlignment="Left" Height="21" Margin="10,66,0,0" TextWrapping="Wrap" Text="Employee ID" VerticalAlignment="Top" FontSize="14" Width="82"/>
+        <TextBlock HorizontalAlignment="Left" Height="21" Margin="10,146,0,0" TextWrapping="Wrap" Text="NIC" VerticalAlignment="Top" FontSize="14" Width="82"/>
+        <TextBlock HorizontalAlignment="Left" Height="21" Margin="10,226,0,0" TextWrapping="Wrap" Text="Department" VerticalAlignment="Top"  FontSize="14" Width="82" RenderTransformOrigin="0.482,2.705"/>
+        <TextBlock HorizontalAlignment="Left" Height="21" Margin="10,266,0,0" TextWrapping="Wrap" Text="Position" VerticalAlignment="Top"  FontSize="14" Width="82"/>
+        <TextBlock HorizontalAlignment="Left" Height="21" Margin="10,306,0,0" TextWrapping="Wrap" Text="Salary" VerticalAlignment="Top"  FontSize="14" Width="82"/>
+        <TextBlock HorizontalAlignment="Left" Height="20" Margin="10,346,0,0" TextWrapping="Wrap" Text="Contact Number" VerticalAlignment="Top"  FontSize="14" Width="106"/>
+        <TextBlock HorizontalAlignment="Left" Height="21" Margin="10,386,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="82"  FontSize="14" RenderTransformOrigin="0.496,8.419"/>
+        <TextBlock HorizontalAlignment="Left" Height="21" Margin="10,186,0,0" TextWrapping="Wrap" Text="Gender" VerticalAlignment="Top"  FontSize="14" Width="82"/>
+
+        <TextBox IsEnabled="False" HorizontalAlignment="Left" Height="25" Margin="149,64,0,0" TextWrapping="Wrap" Text="{Binding EmployeeID, Mode=TwoWay}" VerticalAlignment="Top" FontSize="13" Width="435"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="149,304,0,0" TextWrapping="Wrap" Text="{Binding Salary, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" FontSize="13" Width="435"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="149,144,0,0" TextWrapping="Wrap" Text="{Binding NIC, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" FontSize="13" Width="435"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="149,104,0,0" TextWrapping="Wrap" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" FontSize="13" Width="435"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="149,344,0,0" TextWrapping="Wrap" Text="{Binding Number, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" FontSize="13" Width="435"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="149,384,0,0" TextWrapping="Wrap" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" FontSize="13" Width="435"/>
+        <ComboBox ItemsSource="{Binding Departments}" SelectedItem="{Binding SelectedDepartment, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="25" Margin="149,224,0,0" VerticalAlignment="Top" Width="217"/>
+
+        <ComboBox ItemsSource="{Binding Positions}" SelectedItem="{Binding SelectedPosition, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="25" Margin="150,264,0,0" VerticalAlignment="Top" Width="217"/>
+
+        <RadioButton GroupName="GenderGroup"  IsChecked="{Binding MaleSelected, Mode=TwoWay}" Content="Male" HorizontalAlignment="Left" Margin="150,186,0,0" FontSize="13"  VerticalAlignment="Top"/>
+        <RadioButton GroupName="GenderGroup"  IsChecked="{Binding FemaleSelected, Mode=TwoWay}" Content="Female" HorizontalAlignment="Left" Margin="264,186,0,0" FontSize="13"  VerticalAlignment="Top" />
+
+        <Button Content="Back" Command="{Binding BackCommand}" HorizontalAlignment="Left" Height="27" Margin="321,445,0,0" FontSize="13" VerticalAlignment="Top" Width="120"/>
+        <Button Command="{Binding UpdateEmployeeCommand}" IsEnabled="{Binding EnableSubmit}" Content="Submit" HorizontalAlignment="Left" Height="27" Margin="464,445,0,0" FontSize="13" VerticalAlignment="Top" Width="120"/>
+
     </Grid>
 </Page>

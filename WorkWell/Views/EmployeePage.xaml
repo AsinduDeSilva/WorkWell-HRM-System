@@ -20,7 +20,7 @@
         <ComboBox ItemsSource="{Binding Positions}" SelectedItem="{Binding SelectedPosition, Mode=TwoWay}" SelectedIndex="0" HorizontalAlignment="Left" Height="23" Margin="279,130,0,0" VerticalAlignment="Top" Width="86"/>
 
         <TextBlock HorizontalAlignment="Left" Height="23" Margin="215,130,0,0" TextWrapping="Wrap" Text="Position" VerticalAlignment="Top" FontSize="14"/>
-        <DataGrid ItemsSource="{Binding Employees}" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="335" Margin="4,194,0,0" VerticalAlignment="Top" Width="710">
+        <DataGrid ItemsSource="{Binding Employees}" SelectedItem="{Binding SelectedEmployee}" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="335" Margin="4,194,0,0" VerticalAlignment="Top" Width="710">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Employee ID" Binding="{Binding EmployeeID}" Width="1*"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="3*"/>

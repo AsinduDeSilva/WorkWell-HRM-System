@@ -23,6 +23,7 @@ namespace WorkWell.Views
         public AddEmployeePage()
         {
             InitializeComponent();
+            DataContext = new ViewModels.AddEmployeePageViewModel();
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)

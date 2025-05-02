@@ -47,6 +47,19 @@ namespace WorkWell.ViewModels
             }
         }
 
+        private Employee selectedEmployee;
+
+        public Employee SelectedEmployee
+        {
+            get => selectedEmployee;
+            set
+            {
+                selectedEmployee = value;
+                OnPropertyChanged();
+                FrameManagerService.SubFrame.Navigate(new UpdateEmployeePage(selectedEmployee.EmployeeID));
+            }
+        }
+
         private string selectedDepartment = "All";
         public string SelectedDepartment
         {
