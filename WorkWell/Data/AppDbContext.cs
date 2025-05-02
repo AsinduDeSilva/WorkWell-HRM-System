@@ -22,6 +22,15 @@ namespace WorkWell.Data
         {
             optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=WorkWellDb;Trusted_Connection=True;");
         }
-        
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Department>()
+                .HasOne(d => d.HRManager)
+                .WithMany(h => h.Departments)
+                .HasForeignKey(d => d.HRManagerID)
+                .OnDelete(DeleteBehavior.SetNull);
+        }
+
     }
 }
