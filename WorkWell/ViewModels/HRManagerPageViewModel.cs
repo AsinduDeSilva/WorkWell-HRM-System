@@ -61,7 +61,7 @@ namespace WorkWell.ViewModels
             {
                 selectedItem = value;
                 OnPropertyChanged();
-                FrameManagerService.SubFrame.Navigate(new UpdateHRManagerPage(selectedItem.HRManagerID));
+                FrameManagerService.SubFrame.Navigate(new HRMProfilePage(selectedItem.HRManagerID));
             }
         }
 
