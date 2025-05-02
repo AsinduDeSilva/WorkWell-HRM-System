@@ -18,9 +18,9 @@ namespace WorkWell.Views
     /// <summary>
     /// Interaction logic for EmployeeForm.xaml
     /// </summary>
-    public partial class EmployeeForm : Page
+    public partial class AddEmployeePage : Page
     {
-        public EmployeeForm()
+        public AddEmployeePage()
         {
             InitializeComponent();
         }
