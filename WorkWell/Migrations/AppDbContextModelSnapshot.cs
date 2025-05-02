@@ -46,7 +46,7 @@ namespace WorkWell.Migrations
 
                     b.HasIndex("EmployeeID");
 
-                    b.ToTable("Attendances", (string)null);
+                    b.ToTable("Attendances");
                 });
 
             modelBuilder.Entity("WorkWell.Models.Department", b =>
@@ -68,7 +68,7 @@ namespace WorkWell.Migrations
 
                     b.HasIndex("HRManagerID");
 
-                    b.ToTable("Departments", (string)null);
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("WorkWell.Models.Employee", b =>
@@ -124,7 +124,7 @@ namespace WorkWell.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Employees", (string)null);
+                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("WorkWell.Models.HRManager", b =>
@@ -155,7 +155,7 @@ namespace WorkWell.Migrations
                     b.HasIndex("UserID")
                         .IsUnique();
 
-                    b.ToTable("HRManagers", (string)null);
+                    b.ToTable("HRManagers");
                 });
 
             modelBuilder.Entity("WorkWell.Models.Leave", b =>
@@ -184,7 +184,7 @@ namespace WorkWell.Migrations
 
                     b.HasIndex("EmployeeID");
 
-                    b.ToTable("Leaves", (string)null);
+                    b.ToTable("Leaves");
                 });
 
             modelBuilder.Entity("WorkWell.Models.Payroll", b =>
@@ -214,7 +214,7 @@ namespace WorkWell.Migrations
 
                     b.HasIndex("EmployeeID");
 
-                    b.ToTable("Payrolls", (string)null);
+                    b.ToTable("Payrolls");
                 });
 
             modelBuilder.Entity("WorkWell.Models.User", b =>
@@ -239,7 +239,7 @@ namespace WorkWell.Migrations
 
                     b.HasKey("UserID");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("WorkWell.Models.Attendance", b =>
@@ -257,7 +257,8 @@ namespace WorkWell.Migrations
                 {
                     b.HasOne("WorkWell.Models.HRManager", "HRManager")
                         .WithMany("Departments")
-                        .HasForeignKey("HRManagerID");
+                        .HasForeignKey("HRManagerID")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("HRManager");
                 });

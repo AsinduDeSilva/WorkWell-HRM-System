@@ -64,7 +64,8 @@ namespace WorkWell.Migrations
                         name: "FK_Departments_HRManagers_HRManagerID",
                         column: x => x.HRManagerID,
                         principalTable: "HRManagers",
-                        principalColumn: "HRManagerID");
+                        principalColumn: "HRManagerID",
+                        onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.CreateTable(

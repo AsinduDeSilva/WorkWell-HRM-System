@@ -12,7 +12,7 @@ using WorkWell.Data;
 namespace WorkWell.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250501163709_init")]
+    [Migration("20250502114646_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -260,7 +260,8 @@ namespace WorkWell.Migrations
                 {
                     b.HasOne("WorkWell.Models.HRManager", "HRManager")
                         .WithMany("Departments")
-                        .HasForeignKey("HRManagerID");
+                        .HasForeignKey("HRManagerID")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("HRManager");
                 });
