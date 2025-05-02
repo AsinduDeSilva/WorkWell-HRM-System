@@ -49,7 +49,7 @@ namespace WorkWell.ViewModels
         {
             foreach (var user in context.Users.Include(user => user.Employee).Include(user => user.HRManager).ToList())
             {
-                if (user.Email == email && user.Password == password)
+                if (user.Email == email && PasswordHashingService.Verify(password, user.Password))
                 {
                     UserSession.Login(user);
                     if (user.Role.Equals(RoleTypes.ADMIN.ToString()))
