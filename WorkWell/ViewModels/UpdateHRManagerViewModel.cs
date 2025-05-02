@@ -1,10 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using WorkWell.Data;
 using WorkWell.Models;
@@ -14,21 +9,12 @@ using WorkWell.Views.Admin;
 
 namespace WorkWell.ViewModels
 {
-    public class DepartmentOptionUpdate : ViewModelBase
+    internal class DepartmentOptionUpdate 
     {
         public string Name { get; set; }
-
-        private bool isSelected;
-        public bool IsSelected
-        {
-            get => isSelected;
-            set
-            {
-                isSelected = value;
-                OnPropertyChanged();
-            }
-        }
+        public bool IsSelected { get; set; } = false;
     }
+
     internal class UpdateHRManagerViewModel : ViewModelBase
     {
         private AppDbContext context;
@@ -188,7 +174,7 @@ namespace WorkWell.ViewModels
             {
                 var departments = context.Departments.Select(d => d.DepartmentName).ToList();
                 DepartmentOptionsUpdate = new ObservableCollection<DepartmentOptionUpdate>(
-                    departments.Select(d => new DepartmentOptionUpdate { Name = d })
+                    departments.Select(d => new DepartmentOptionUpdate() { Name = d })
                 );
             }
         }
@@ -209,14 +195,15 @@ namespace WorkWell.ViewModels
                     email = hrManager.User.Email;
                     foreach (var hrm in hrManager.Departments)
                     {
-                        var match = DepartmentOptionsUpdate.FirstOrDefault(d => d.Name.Equals(hrm.DepartmentName, StringComparison.OrdinalIgnoreCase));
+                        DepartmentOptionUpdate match = DepartmentOptionsUpdate.FirstOrDefault(d => d.Name.Equals(hrm.DepartmentName, StringComparison.OrdinalIgnoreCase));
                         if (match != null)
                         {
                             match.IsSelected = true;
+
                         }
                     }
-
                     EnableSubmit = false;
+
                 }
             }
         }
@@ -236,27 +223,13 @@ namespace WorkWell.ViewModels
             var hrManager = context.HRManagers.Include(hrm => hrm.User).Include(hrm => hrm.Departments).FirstOrDefault(hrm => hrm.HRManagerID == HrManagerID);
             if (hrManager != null)
             {
-                if (Finance == true)
+                foreach (var item in DepartmentOptionsUpdate)
                 {
-                    departments.Add(context.Departments.FirstOrDefault(d => d.DepartmentName == "Finance"));
+                    if (item.IsSelected)
+                    {
+                        departments.Add(context.Departments.FirstOrDefault(d => d.DepartmentName == item.Name));
+                    }
                 }
-                if (IT == true)
-                {
-                    departments.Add(context.Departments.FirstOrDefault(d => d.DepartmentName == "IT"));
-                }
-                if (Marketing == true)
-                {
-                    departments.Add(context.Departments.FirstOrDefault(d => d.DepartmentName == "Marketing"));
-                }
-                if (Sales == true)
-                {
-                    departments.Add(context.Departments.FirstOrDefault(d => d.DepartmentName == "Sales"));
-                }
-                if (Operations == true)
-                {
-                    departments.Add(context.Departments.FirstOrDefault(d => d.DepartmentName == "Operations"));
-                }
-
                 hrManager.Name = Name;
                 hrManager.Phone = Phone;
                 hrManager.NIC = NIC;
@@ -272,5 +245,8 @@ namespace WorkWell.ViewModels
                 FrameManagerService.SubFrame.Navigate(new HRManagerPage());
             }
         }
+
+ 
+
     }
 }

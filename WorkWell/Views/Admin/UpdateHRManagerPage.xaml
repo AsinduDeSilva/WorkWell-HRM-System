@@ -31,7 +31,7 @@
         <ItemsControl ItemsSource="{Binding DepartmentOptionsUpdate}" Margin="150,226,0,0">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <CheckBox Content="{Binding Name}" IsChecked="{Binding IsSelected, Mode=TwoWay}" FontSize="13" Margin="10,0,0,0"/>
+                    <CheckBox Content="{Binding Name}" IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontSize="13" Margin="10,0,0,0"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
