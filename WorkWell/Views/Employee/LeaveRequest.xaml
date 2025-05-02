@@ -43,9 +43,12 @@
                 
                 <TextBlock Text="Remaining Leaves" FontSize="15" FontWeight="Bold" Margin="0,20,0,10"/>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                    <TextBlock Text="Sick Leave: 5" Width="150"/>
-                    <TextBlock Text="Casual Leave: 3" Width="150"/>
-                    <TextBlock Text="Vacation: 7" Width="150"/>
+                    <TextBlock Text="Sick Leave:" Width="65"/>
+                    <TextBlock Text="{Binding MedicalLeaveBalance}" Width="60"/>
+                    <TextBlock Text="Casual Leave: " Width="80"/>
+                    <TextBlock Text="{Binding CasualLeaveBalance}" Width="60"/>
+                    <TextBlock Text="Vacation: " Width="55"/>
+                    <TextBlock Text="{Binding VacationLeaveBalance}" Width="60"/>
                 </StackPanel>
 
                 

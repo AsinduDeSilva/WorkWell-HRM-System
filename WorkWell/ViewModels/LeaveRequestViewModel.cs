@@ -19,6 +19,9 @@ namespace WorkWell.ViewModels
         private ComboBoxItem _selectedLeaveType;
         private DateOnly _date = DateOnly.FromDateTime(DateTime.Today); // Initialize with current date
         private ObservableCollection<Leave> _leaveHistory;
+        private int _medicalLeaveBalance;
+        private int _casualLeaveBalance;
+        private int _vacationLeaveBalance;
 
 
         public ObservableCollection<Leave> LeaveHistory
@@ -62,6 +65,24 @@ namespace WorkWell.ViewModels
             set => Date = DateOnly.FromDateTime(value); // Convert DateTime → DateOnly
         }
 
+        public int MedicalLeaveBalance
+        {
+            get => _medicalLeaveBalance;
+            set { _medicalLeaveBalance = value; OnPropertyChanged(); }
+        }
+
+        public int CasualLeaveBalance
+        {
+            get => _casualLeaveBalance;
+            set { _casualLeaveBalance = value; OnPropertyChanged(); }
+        }
+
+        public int VacationLeaveBalance
+        {
+            get => _vacationLeaveBalance;
+            set { _vacationLeaveBalance = value; OnPropertyChanged(); }
+        }
+
         public ICommand SubmitCommand => new RelayCommand(execute => SubmitLeave());
 
 
@@ -71,6 +92,14 @@ namespace WorkWell.ViewModels
             this.EmployeeId = UserSession.CurrentUser.Employee.EmployeeID;
             this.EmployeeName = UserSession.CurrentUser.Employee.Name;
             LoadLeaveHistory(); // Load history when ViewModel initializes
+            LoadLeaveBalances();
+        }
+
+        private void LoadLeaveBalances()
+        {
+            MedicalLeaveBalance = UserSession.CurrentUser.Employee.SickLeaves;
+            CasualLeaveBalance = UserSession.CurrentUser.Employee.CasualLeaves;
+            VacationLeaveBalance = UserSession.CurrentUser.Employee.VacationLeaves;
         }
 
         private void LoadLeaveHistory()
@@ -90,6 +119,11 @@ namespace WorkWell.ViewModels
         {
             if (!ValidateSubmission()) return;
 
+            if (!HasSufficientLeaveBalance())
+            {
+                MessageBox.Show($"Cannot apply for {SelectedLeaveType.Content.ToString()} leave. You have no remaining leaves of this type.");
+                return;
+            }
 
             try
             {
@@ -115,6 +149,18 @@ namespace WorkWell.ViewModels
             {
                 MessageBox.Show($"Error submitting leave: {ex.Message}");
             }
+        }
+
+        private bool HasSufficientLeaveBalance()
+        {
+            var leaveType = SelectedLeaveType.Content.ToString();
+            return leaveType switch
+            {
+                "MEDICAL" => MedicalLeaveBalance > 0,
+                "CASUAL" => CasualLeaveBalance > 0,
+                "VACATION" => VacationLeaveBalance > 0,
+                _ => false
+            };
         }
 
         private void ClearForm()

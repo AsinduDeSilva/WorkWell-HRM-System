@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Controls;
+using WorkWell.ViewModels.HR;
 
 namespace WorkWell.Views.HR
 {
@@ -9,6 +10,7 @@ namespace WorkWell.Views.HR
         public LeaveRequestPage()
         {
             InitializeComponent();
+            this.DataContext = new LeaveRequestHRViewModel();
         }
     }
 

@@ -3,63 +3,90 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:local="clr-namespace:WorkWell.Views.HR"
       mc:Ignorable="d"
       Title="LeaveRequests"
       Background="White"
-      d:DesignHeight="640" d:DesignWidth="768"
->
-      
+      d:DesignHeight="640" d:DesignWidth="768">
 
     <Grid>
         <StackPanel>
-            <TextBlock Text="Leave Requests"
-                       FontSize="28"
-                       FontWeight="Bold"
-                       Foreground="#2C3E50"
-                       HorizontalAlignment="Left"
-                       Margin="0,0,0,20"/>
+            <TextBlock Text="Pending Leave Requests"
+                     FontSize="28"
+                     FontWeight="Bold"
+                     Foreground="#2C3E50"
+                     HorizontalAlignment="Left"
+                     Margin="0,0,0,20"/>
 
             <DataGrid x:Name="LeaveRequestsGrid"
-                      AutoGenerateColumns="False"
-                      HeadersVisibility="Column"
-                      CanUserAddRows="False"
-                      Background="White"
-                      BorderBrush="#BDC3C7"
-                      BorderThickness="1"
-                      RowHeight="42"
-                      FontSize="15"
-                      FontFamily="Segoe UI"
-                      SelectionMode="Single"
-                      IsReadOnly="True"
-                      HorizontalAlignment="Stretch"
-                      VerticalAlignment="Stretch">
+                    ItemsSource="{Binding PendingLeaveRequests}"
+                    AutoGenerateColumns="False"
+                    HeadersVisibility="Column"
+                    CanUserAddRows="False"
+                    Background="White"
+                    BorderBrush="#BDC3C7"
+                    BorderThickness="1"
+                    RowHeight="42"
+                    FontSize="15"
+                    FontFamily="Segoe UI"
+                    SelectionMode="Single"
+                    IsReadOnly="True"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Employee Name" Binding="{Binding EmployeeName}" Width="1.5*" />
-                    <DataGridTextColumn Header="Employee ID" Binding="{Binding EmployeeId}" Width="*" />
-                    <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="*" />
-                    <DataGridTextColumn Header="Leave Type" Binding="{Binding Reason}" Width="1.5*" />
+                    <DataGridTextColumn Header="Employee Name" Binding="{Binding Employee.Name}" Width="1.5*" />
+                    <DataGridTextColumn Header="Employee ID" Binding="{Binding EmployeeID}" Width="*" />
+                    <DataGridTextColumn Header="Date" Binding="{Binding Date, StringFormat='dd-MMM-yyyy'}" Width="*" />
+                    <DataGridTextColumn Header="Leave Type" Binding="{Binding LeaveType}" Width="1.5*" />
+                    <DataGridTemplateColumn Header="Status" Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Status}" 
+                                         FontWeight="DemiBold"
+                                         HorizontalAlignment="Center">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Foreground" Value="Black"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Status}" Value="APPROVED">
+                                                    <Setter Property="Foreground" Value="Green"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Status}" Value="REJECTED">
+                                                    <Setter Property="Foreground" Value="Red"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                     <DataGridTemplateColumn Header="Action" Width="220">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0">
-                                    <Button Content="Accept"
-                                            Width="80"
-                                            Height="32"
-                                            Margin="5,0"
-                                            Background="#2ECC71"
-                                            Foreground="White"
-                                            FontWeight="Bold"
-                                            Cursor="Hand"
-                                            BorderThickness="0"/>
-                                    <Button Content="Decline"
-                                            Width="80"
-                                            Height="32"
-                                            Margin="5,0"
-                                            Background="#E74C3C"
-                                            Foreground="White"
-                                            FontWeight="Bold"
-                                            Cursor="Hand"
-                                            BorderThickness="0"/>
+                                    <Button Content="Approve"
+                                          Width="80"
+                                          Height="32"
+                                          Margin="5,0"
+                                          Background="#2ECC71"
+                                          Foreground="White"
+                                          FontWeight="Bold"
+                                          Cursor="Hand"
+                                          BorderThickness="0"
+                                          Command="{Binding DataContext.ApproveCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                          CommandParameter="{Binding}"/>
+                                    <Button Content="Reject"
+                                          Width="80"
+                                          Height="32"
+                                          Margin="5,0"
+                                          Background="#E74C3C"
+                                          Foreground="White"
+                                          FontWeight="Bold"
+                                          Cursor="Hand"
+                                          BorderThickness="0"
+                                          Command="{Binding DataContext.RejectCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                          CommandParameter="{Binding}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
