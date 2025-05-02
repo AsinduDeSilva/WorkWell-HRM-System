@@ -10,11 +10,11 @@
 
     <Grid Background="White">
         <TextBlock HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" Text="Employees" VerticalAlignment="Top" Height="37" Width="172" FontSize="28" FontWeight="SemiBold"/>
-        <Button  Command="{Binding AddEmployeeCommand}" x:Name="Add_Employee" Content="+ Add Employee" HorizontalAlignment="Left" Height="27" Margin="570,66,0,0" VerticalAlignment="Top" Width="134"/>
+        <Button  Command="{Binding AddEmployeeCommand}" Background="#213447" Foreground="White" x:Name="Add_Employee" Content="+ Add Employee" HorizontalAlignment="Left" Height="27" Margin="570,66,0,0" VerticalAlignment="Top" Width="134"/>
         <TextBox  Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="197" Margin="0,66,0,0"/>
-        <Button Command="{Binding SearchCommand}" Content="Search" HorizontalAlignment="Left" Height="23" Margin="217,66,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button Command="{Binding SearchCommand}" Background="#213447" Foreground="White" Content="Search" HorizontalAlignment="Left" Height="23" Margin="217,66,0,0" VerticalAlignment="Top" Width="100"/>
 
-        <ComboBox ItemsSource="{Binding Departments}" SelectedItem="{Binding SelectedDepartment, Mode=TwoWay}" SelectedIndex="0" HorizontalAlignment="Left" Height="23" Margin="93,129,0,0" VerticalAlignment="Top" Width="86"/>
+        <ComboBox ItemsSource="{Binding Departments}"  SelectedItem="{Binding SelectedDepartment, Mode=TwoWay}" SelectedIndex="0" HorizontalAlignment="Left" Height="23" Margin="93,129,0,0" VerticalAlignment="Top" Width="86"/>
 
         <TextBlock HorizontalAlignment="Left" Height="23" Margin="4,129,0,0" TextWrapping="Wrap" Text="Department" VerticalAlignment="Top" FontSize="14"/>
         <ComboBox ItemsSource="{Binding Positions}" SelectedItem="{Binding SelectedPosition, Mode=TwoWay}" SelectedIndex="0" HorizontalAlignment="Left" Height="23" Margin="279,130,0,0" VerticalAlignment="Top" Width="86"/>
@@ -29,6 +29,6 @@
             </DataGrid.Columns>
             
         </DataGrid>
-        <Button Command="{Binding ClearCommand}" Content="Clear" HorizontalAlignment="Left" Height="23" Margin="411,130,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button Command="{Binding ClearCommand}" Background="#213447" Foreground="White" Content="Clear" HorizontalAlignment="Left" Height="23" Margin="411,130,0,0" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </Page>

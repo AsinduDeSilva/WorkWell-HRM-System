@@ -85,9 +85,9 @@
             </Grid>
 
             <StackPanel Orientation="Horizontal" Margin="0,30,0,0">
-                <Button Command="{Binding UpdateCommand}" Content="Update" Width="100" Height="30" Background="Black" Foreground="White" Margin="0,0,20,0"/>
-                <Button Command="{Binding DeleteCommand}" Content="Delete" Width="100" Height="30" Background="Black" Foreground="White"/>
-                <Button Command="{Binding PayrollCommand}" Content="Payroll" Width="100" Height="30" Background="Black" Foreground="White" Margin="20,0,0,0"/>
+                <Button Command="{Binding UpdateCommand}" Background="#213447" Foreground="White" Content="Update" Width="100" Height="30" Margin="0,0,20,0"/>
+                <Button Command="{Binding DeleteCommand}" Background="#213447" Foreground="White" Content="Delete" Width="100" Height="30"/>
+                <Button Command="{Binding PayrollCommand}" Background="#213447" Foreground="White" Content="Payroll" Width="100" Height="30" Margin="20,0,0,0"/>
             </StackPanel>
         </StackPanel>
         <Ellipse HorizontalAlignment="Center" Height="190" Margin="0,62,0,0" Stroke="Black" VerticalAlignment="Top" Width="190" StrokeThickness="5"/>

@@ -23,7 +23,7 @@
         <TextBox HorizontalAlignment="Left" Text="{Binding BasicSalary, Mode=TwoWay}" Height="25" Margin="149,238,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" FontSize="13" Width="435" IsEnabled="False"/>
         <TextBox HorizontalAlignment="Left" Text="{Binding Allowances, Mode=TwoWay}" Height="25" Margin="149,278,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" FontSize="13" Width="435" IsEnabled="False"/>
         <TextBox HorizontalAlignment="Left" Text="{Binding TotalSalary, Mode=TwoWay}" Height="25" Margin="149,318,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" FontSize="13" Width="435" IsEnabled="False"/>
-        <Button Content="Download Payslip" Command="{Binding DownloadPayslipCommand}" HorizontalAlignment="Left" Height="27" Margin="464,398,0,0" FontSize="13" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Download Payslip" Command="{Binding DownloadPayslipCommand}" Background="#213447" Foreground="White" HorizontalAlignment="Left" Height="27" Margin="464,398,0,0" FontSize="13" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Height="20" Margin="10,320,0,0" TextWrapping="Wrap" Text="Total Salary" VerticalAlignment="Top"  FontSize="14" Width="106"/>
 
     </Grid>

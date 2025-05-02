@@ -49,10 +49,10 @@
                                             <Setter Property="Foreground" Value="Black"/>
                                             <Style.Triggers>
                                                 <DataTrigger Binding="{Binding Status}" Value="APPROVED">
-                                                    <Setter Property="Foreground" Value="Green"/>
+                                                    <Setter Property="Foreground" Value="#213447"/>
                                                 </DataTrigger>
                                                 <DataTrigger Binding="{Binding Status}" Value="REJECTED">
-                                                    <Setter Property="Foreground" Value="Red"/>
+                                                    <Setter Property="Foreground" Value="DarkRed"/>
                                                 </DataTrigger>
                                             </Style.Triggers>
                                         </Style>

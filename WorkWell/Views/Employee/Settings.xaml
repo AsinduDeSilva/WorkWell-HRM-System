@@ -25,8 +25,8 @@
                 <PasswordBox x:Name="txtConfirmPassword"   Margin="0,5,0,25" Height="25" Width="500" HorizontalAlignment="Left" PasswordChanged="txtConfirmPassword_PasswordChanged"/>
                 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,0">
-                    <Button Content="Save" Height="32" Width="200" Margin="0,0,10,0" Background="Black" Foreground="White" Command="{Binding ChangePasswordCommand}"/>
-                    <Button Content="Cancel" Height="32" Width="200" Background="Black" Foreground="White" Click="CancelButton_Click"/>
+                    <Button Content="Save" Height="32" Width="200" Margin="0,0,10,0" Background="#213447" Foreground="White" Command="{Binding ChangePasswordCommand}"/>
+                    <Button Content="Cancel" Height="32" Width="200" Background="#213447" Foreground="White" Click="CancelButton_Click"/>
                 </StackPanel>
             </StackPanel>
         </Border>

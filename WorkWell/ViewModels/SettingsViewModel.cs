@@ -2,7 +2,9 @@
 using System.Windows;
 using WorkWell.Data;
 using WorkWell.MVVM;
+using WorkWell.Services;
 using WorkWell.Session;
+using WorkWell.Views;
 
 namespace WorkWell.ViewModels
 {
@@ -78,7 +80,7 @@ namespace WorkWell.ViewModels
             }
 
             var user = context.Users.Find(UserSession.CurrentUser.UserID);
-            if (user == null ||  PasswordHashingService.Verify(CurrentPassword, user.Password) )
+            if (user == null ||  !PasswordHashingService.Verify(CurrentPassword, user.Password) )
             {
                 MessageBox.Show("Current password is incorrect.");
                 return;
@@ -88,6 +90,7 @@ namespace WorkWell.ViewModels
             context.SaveChanges();
 
             MessageBox.Show("Password changed successfully.");
+            FrameManagerService.MainFrame.Navigate(new Signin());
         }
 
         public void Cancel()

@@ -10,7 +10,7 @@
 
     <Grid Background="White">
         <TextBlock HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" Text="HR Managers" VerticalAlignment="Top" Height="37" Width="172" FontSize="28" FontWeight="SemiBold"/>
-        <Button Name="Add_HRManager" Command="{Binding AddHRManagerCommand}" Content="+ Add HR Manager" HorizontalAlignment="Left" Height="27" Margin="570,66,0,0" VerticalAlignment="Top" Width="134"/>
+        <Button Name="Add_HRManager" Command="{Binding AddHRManagerCommand}" Background="#213447" Foreground="White" Content="+ Add HR Manager" HorizontalAlignment="Left" Height="27" Margin="570,66,0,0" VerticalAlignment="Top" Width="134"/>
 
         <DataGrid ItemsSource="{Binding NewList}" SelectedItem="{Binding SelectedItem}" Name="DataGrid_HRManagers" HorizontalAlignment="Left" Height="335" Margin="4,129,0,0" VerticalAlignment="Top" Width="710" AutoGenerateColumns="False" CanUserAddRows="False">
             <DataGrid.Columns>

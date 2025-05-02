@@ -32,8 +32,8 @@
         <RadioButton IsChecked="{Binding MaleSelected, Mode=TwoWay}" Content="Male" HorizontalAlignment="Left" Margin="150,186,0,0" FontSize="13"  VerticalAlignment="Top"/>
         <RadioButton Content="Female" HorizontalAlignment="Left" Margin="264,186,0,0" FontSize="13"  VerticalAlignment="Top" Checked="RadioButton_Checked"/>
 
-        <Button Command="{Binding ResetCommand}" Content="Reset" HorizontalAlignment="Left" Height="27" Margin="321,445,0,0" FontSize="13" VerticalAlignment="Top" Width="120"/>
-        <Button Command="{Binding AddEmployeeCommand}" Content="Submit" HorizontalAlignment="Left" Height="27" Margin="464,445,0,0" FontSize="13" VerticalAlignment="Top" Width="120"/>
+        <Button Command="{Binding ResetCommand}" Background="#213447" Foreground="White" Content="Reset" HorizontalAlignment="Left" Height="27" Margin="321,445,0,0" FontSize="13" VerticalAlignment="Top" Width="120"/>
+        <Button Command="{Binding AddEmployeeCommand}" Background="#213447" Foreground="White" Content="Submit" HorizontalAlignment="Left" Height="27" Margin="464,445,0,0" FontSize="13" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Page>

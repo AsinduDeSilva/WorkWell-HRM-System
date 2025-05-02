@@ -33,8 +33,8 @@
         <RadioButton GroupName="GenderGroup"  IsChecked="{Binding MaleSelected, Mode=TwoWay}" Content="Male" HorizontalAlignment="Left" Margin="150,186,0,0" FontSize="13"  VerticalAlignment="Top"/>
         <RadioButton GroupName="GenderGroup"  IsChecked="{Binding FemaleSelected, Mode=TwoWay}" Content="Female" HorizontalAlignment="Left" Margin="264,186,0,0" FontSize="13"  VerticalAlignment="Top" />
 
-        <Button Content="Back" Command="{Binding BackCommand}" HorizontalAlignment="Left" Height="27" Margin="321,445,0,0" FontSize="13" VerticalAlignment="Top" Width="120"/>
-        <Button Command="{Binding UpdateEmployeeCommand}" IsEnabled="{Binding EnableSubmit}" Content="Submit" HorizontalAlignment="Left" Height="27" Margin="464,445,0,0" FontSize="13" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Back" Command="{Binding BackCommand}" Background="#213447" Foreground="White" HorizontalAlignment="Left" Height="27" Margin="321,445,0,0" FontSize="13" VerticalAlignment="Top" Width="120"/>
+        <Button Command="{Binding UpdateEmployeeCommand}" Background="#213447" Foreground="White" IsEnabled="{Binding EnableSubmit}" Content="Submit" HorizontalAlignment="Left" Height="27" Margin="464,445,0,0" FontSize="13" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Page>
