@@ -157,7 +157,7 @@ namespace WorkWell.ViewModels
                     return;
                 }
             }
-            if (string.IsNullOrEmpty(Name) || string.IsNullOrEmpty(NIC) || string.IsNullOrEmpty(Phone) || string.IsNullOrEmpty(Email) || (Finance == false && IT == false && Marketing == false && Sales == false && Operations == false))
+            if (string.IsNullOrEmpty(Name) || string.IsNullOrEmpty(NIC) || string.IsNullOrEmpty(Phone) || string.IsNullOrEmpty(Email))
             {
                 MessageBox.Show("Please fill all the fields");
                 return;
@@ -177,27 +177,15 @@ namespace WorkWell.ViewModels
                 MessageBox.Show("Invalid Email");
                 return;
             }
-            if (Finance == true)
+
+            foreach (var item in DepartmentOptions)
             {
-                departments.Add(context.Departments.FirstOrDefault(d => d.DepartmentName == "Finance"));
+                if (item.IsSelected)
+                {
+                    departments.Add(context.Departments.FirstOrDefault(d => d.DepartmentName == item.Name));
+                }
             }
-            if (IT == true)
-            {
-                departments.Add(context.Departments.FirstOrDefault(d => d.DepartmentName == "IT"));
-            }
-            if (Marketing == true)
-            {
-                departments.Add(context.Departments.FirstOrDefault(d => d.DepartmentName == "Marketing"));
-            }
-            if (Sales == true)
-            {
-                departments.Add(context.Departments.FirstOrDefault(d => d.DepartmentName == "Sales"));
-            }
-            if (Operations == true)
-            {
-                departments.Add(context.Departments.FirstOrDefault(d => d.DepartmentName == "Operations"));
-            }
-            
+
 
             var hrManager = new HRManager
             {
