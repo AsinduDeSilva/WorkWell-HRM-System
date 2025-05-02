@@ -9,7 +9,7 @@ namespace WorkWell.Session
 {
     static class UserSession
     {
-        public static User CurrentUser { get; private set; }
+        public static User CurrentUser { get; set; }
 
         public static void Login(User user)
         {

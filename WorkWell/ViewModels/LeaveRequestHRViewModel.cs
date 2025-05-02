@@ -22,8 +22,11 @@ namespace WorkWell.ViewModels.HR
         public ICommand ApproveCommand { get; }
         public ICommand RejectCommand { get; }
 
+        private AppDbContext context;
+
         public LeaveRequestHRViewModel()
         {
+            context = new AppDbContext();
             LoadPendingLeaveRequests();
             ApproveCommand = new RelayCommand(ApproveLeave);
             RejectCommand = new RelayCommand(RejectLeave);
@@ -31,10 +34,9 @@ namespace WorkWell.ViewModels.HR
 
         private void LoadPendingLeaveRequests()
         {
-            using (var context = new AppDbContext())
             {
                 var requests = context.Leaves
-                    .Include(l => l.Employee) // Make sure to include Employee
+                    .Include(l => l.Employee) 
                     .Where(l => l.Status == "PENDING")
                     .OrderBy(l => l.Date)
                     .ToList();
@@ -51,18 +53,19 @@ namespace WorkWell.ViewModels.HR
                     "Confirm Approval", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     UpdateLeaveStatus(leave, "APPROVED");
-                    switch ("")
+                    switch (leave.LeaveType)
                     {
                         case "MEDICAL":
-                            UserSession.CurrentUser.Employee.SickLeaves--;
+                            leave.Employee.SickLeaves--;
                             break;
                         case "CASUAL":
-                            UserSession.CurrentUser.Employee.CasualLeaves--;
+                            leave.Employee.CasualLeaves--;
                             break;
                         case "VACATION":
-                            UserSession.CurrentUser.Employee.VacationLeaves--;
+                            leave.Employee.VacationLeaves--;    
                             break;
-                    }
+                    }  
+                    context.SaveChanges();
                 }
             }
         }
@@ -90,7 +93,7 @@ namespace WorkWell.ViewModels.HR
                     {
                         dbLeave.Status = status;
                         context.SaveChanges();
-                        LoadPendingLeaveRequests(); // Refresh the list
+                        LoadPendingLeaveRequests(); 
                         MessageBox.Show($"Leave request {status.ToLower()} successfully!");
                     }
                 }
